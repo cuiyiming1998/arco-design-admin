@@ -60,8 +60,8 @@ export class ArcoAxios {
 
     // 响应拦截
     this.instance.interceptors.response.use(
-      this.createResponseInterceptor,
-      this.createResponseInterceptorCatch.bind(this)
+      res => this.createResponseInterceptor(res),
+      e => this.createResponseInterceptorCatch.bind(this, e)
     )
   }
 
