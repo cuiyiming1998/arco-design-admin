@@ -1,7 +1,7 @@
 export default {
   theme: 'light',
   projectName: 'Arco Design Admin',
-  github: 'https://github.com/cuiyiming1998/arco-desgin-admin',
+  baseURL: '',
   mock: true,
   urlPrefix: '',
   apiUrl: '',

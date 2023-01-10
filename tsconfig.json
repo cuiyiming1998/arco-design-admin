@@ -9,11 +9,26 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"],
-    }
+      "@/*": [
+        "./src/*"
+      ],
+    },
+    "typeRoots": [
+      "./node_modules/@types/",
+      "src/types"
+    ],
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "./*.d.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "./*.d.ts"
+  ]
 }
