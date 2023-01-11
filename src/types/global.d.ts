@@ -45,7 +45,7 @@ declare global {
 
   interface BasicResponse<T = any> {
     code: number
-    msg: string
+    msg?: string
     data: T
     success: boolean
     timestamp?: number

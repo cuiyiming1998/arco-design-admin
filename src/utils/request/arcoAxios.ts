@@ -7,6 +7,7 @@ import axios, {
 import { isFunction } from '../is'
 import { BasicAxiosOptions, RequestOptions, RequestHandlers } from './types'
 import { cloneDeep } from 'lodash-es'
+import { createError } from '../error'
 
 export class ArcoAxios {
   private options: BasicAxiosOptions
@@ -152,7 +153,7 @@ export class ArcoAxios {
               const response = handleResponseData(res, requestOptions)
               return resolve(response)
             } catch (err) {
-              return reject(err || new Error('请求出错'))
+              return reject(err || createError('请求出错', 'Request错误'))
             }
           }
         })

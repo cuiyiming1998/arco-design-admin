@@ -16,5 +16,11 @@ export const axiosConfig: AxiosRequestConfig = {
 
 // 系统请求配置
 export const defaultOption: RequestOptions = {
-  isShowMessage: true
+  raw: false,
+  isShowMessage: true,
+  isShowErrorMessage: true,
+  isShowSuccessMessage: false,
+  throwErrorWhenDataIsNull: true,
+  successMessage: '请求成功',
+  errorMessage: '请求失败'
 }
