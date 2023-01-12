@@ -72,11 +72,9 @@ export interface RequestOptions {
   // 在接口code不等于successCode时是否显示后端message
   isShowErrorMessage?: boolean
   // 在接口code等于successCode时是否显示后端message
-  isShowSuccessMessage: boolean
-  // 是否在返回data为null时抛出异常
-  throwErrorWhenDataIsNull?: boolean
+  isShowSuccessMessage?: boolean
   // 成功的默认message
-  successMessage: string
+  successMessage?: string
   // 失败的默认message
-  errorMessage: string
+  errorMessage?: string
 }

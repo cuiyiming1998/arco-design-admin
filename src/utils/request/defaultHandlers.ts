@@ -17,14 +17,14 @@ export const defaultHandlers: RequestHandlers = {
     res: AxiosResponse<Response<T>>,
     options: RequestOptions
   ): T | AxiosResponse<Response<T>> {
-    const { raw, throwErrorWhenDataIsNull } = options
+    const { raw } = options
     if (!options || raw) {
       // 直接返回原生res
       return res
     }
 
     // 处理返回值不合法的情况
-    handleInvalidData(res, !!throwErrorWhenDataIsNull)
+    handleInvalidData(res)
 
     createMessages(res.data, options)
     // 成功后在外面resolve(result)
@@ -72,9 +72,9 @@ export const defaultHandlers: RequestHandlers = {
  * @return { Void }
  *
  */
-const handleInvalidData = (res: AxiosResponse, isThrow: boolean) => {
+const handleInvalidData = (res: AxiosResponse) => {
   const { data } = res
-  if (!data && isThrow) {
+  if (!data) {
     createError('返回值为空', 'defaultHandlers - handleInvalidData')
   }
 }
@@ -122,9 +122,9 @@ const createMessages = (data: Response, options: RequestOptions) => {
   const { msg } = data
 
   if (isSuccessResponse(data) && isShowSuccessMessage) {
-    Message.success(msg || successMessage)
+    Message.success(msg || successMessage || '请求成功')
   } else if (!isSuccessResponse(data) && isShowErrorMessage) {
-    Message.error(msg || errorMessage)
+    Message.error(msg || errorMessage || '请求失败')
   }
 }
 

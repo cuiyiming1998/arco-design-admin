@@ -4,8 +4,8 @@ export function test() {
   return axios.request(
     {
       method: 'GET',
-      data: '',
-      url: 'http://www.baidu.com'
+      params: { id: 1 },
+      url: 'http://jsonplaceholder.typicode.com/posts'
     },
     {
       isShowMessage: true

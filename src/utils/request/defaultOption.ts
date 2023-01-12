@@ -20,7 +20,6 @@ export const defaultOption: RequestOptions = {
   isShowMessage: true,
   isShowErrorMessage: true,
   isShowSuccessMessage: false,
-  throwErrorWhenDataIsNull: true,
   successMessage: '请求成功',
   errorMessage: '请求失败'
 }
