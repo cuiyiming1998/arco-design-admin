@@ -1,5 +1,5 @@
 {
-  "name": "vue3-template-all-in-one",
+  "name": "arco-design-admin",
   "version": "0.0.1",
   "scripts": {
     "dev": "vite",
