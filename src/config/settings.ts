@@ -12,5 +12,9 @@ export default {
   // 超时时间 单位s
   requestTimeout: 5,
   // 接口成功的code集合
-  successCode: [0, 200]
+  successCode: [0, 200],
+  // 是否显示github icon
+  isShowGithub: true,
+  // github跳转地址,
+  github: 'https://www.github.com/cuiyiming1998/arco-design-admin'
 }

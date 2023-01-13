@@ -1,4 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
+import { HomePage, NotFoundPage, Layout } from './routerComponents'
 
 export const Base: RouteRecordRaw = {
   path: '/',
@@ -8,21 +9,41 @@ export const Base: RouteRecordRaw = {
 
 export const Home: RouteRecordRaw = {
   path: '/home',
-  name: 'Home',
-  component: () => import('@/pages/home/index.vue'),
+  name: 'HomeLayout',
+  component: Layout,
   meta: {
     title: '首页'
-  }
+  },
+  children: [
+    {
+      path: '/home',
+      name: 'HomePage',
+      component: HomePage,
+      meta: {
+        title: 'HomePage'
+      }
+    }
+  ]
 }
 
 export const ErrorPage: RouteRecordRaw = {
   path: '/:pathMatch(.*)*',
-  name: 'ErrorPage',
-  component: () => import('@/pages/404/index.vue'),
+  name: 'NotFoundPageLayout',
+  component: Layout,
   meta: {
-    title: 'ErrorPage',
+    title: 'NotFoundPageLayout',
     hideBreadcrumb: true
-  }
+  },
+  children: [
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFoundPage',
+      component: NotFoundPage,
+      meta: {
+        title: 'NotFoundPage'
+      }
+    }
+  ]
 }
 
 const defaultRouters: RouteRecordRaw[] = [Base, Home, ErrorPage]

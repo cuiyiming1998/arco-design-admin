@@ -4,7 +4,9 @@
 
 <style lang="scss" setup>
   #app {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+    background-color: var(--color-bg-1);
   }
 </style>
