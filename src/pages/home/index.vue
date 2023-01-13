@@ -4,8 +4,4 @@
   </main>
 </template>
 
-<script lang="ts" setup>
-  import { test } from '@/api'
-
-  test()
-</script>
+<script lang="ts" setup></script>

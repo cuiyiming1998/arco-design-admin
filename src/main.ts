@@ -2,7 +2,7 @@ import '@/assets/tw.css'
 import ArcoVueIcon from '@arco-design/web-vue/es/icon'
 import '@arco-design/web-vue/dist/arco.css'
 import App from './App.vue'
-import router from './router'
+import router from './router/index'
 import 'animate.css'
 
 const pinia = createPinia()
