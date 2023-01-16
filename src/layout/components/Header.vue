@@ -27,7 +27,7 @@
           <icon-moon-fill class="text-base" />
         </template>
       </a-button>
-      <a-tooltip content="跳转Github">
+      <a-tooltip :content="$t('nav.dropdown.github')">
         <a-button v-if="isShowGithub" shape="round" @click="gotoGithub">
           <template #icon>
             <icon-github class="text-base" />
