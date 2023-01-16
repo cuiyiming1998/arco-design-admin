@@ -4,14 +4,13 @@
       <Header />
     </a-layout-header>
     <a-layout>
-      <a-layout-sider collapsible breakpoint="md" class="bg-white">
+      <a-layout-sider collapsible breakpoint="md">
         <Sider />
       </a-layout-sider>
       <a-layout-content>
         <router-view />
       </a-layout-content>
     </a-layout>
-    <a-layout-footer>Footer</a-layout-footer>
   </a-layout>
 </template>
 
@@ -22,6 +21,6 @@
 
 <style lang="scss" scoped>
   .ada-layout :deep(.arco-layout-sider) {
-    background-color: var(--color-bg-3);
+    background-color: var(--color-bg-2);
   }
 </style>

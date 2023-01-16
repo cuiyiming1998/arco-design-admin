@@ -7,6 +7,6 @@
     height: 100vh;
     width: 100vw;
     overflow: auto;
-    background-color: var(--color-bg-3);
+    background-color: var(--color-bg-4);
   }
 </style>
