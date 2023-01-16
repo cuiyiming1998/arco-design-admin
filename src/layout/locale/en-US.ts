@@ -1,3 +1,4 @@
 export default {
-  'nav.dropdown.github': 'Go to Github'
+  'header.locale.success': 'Change to English successfully',
+  'header.dropdown.github': 'Go to Github'
 }

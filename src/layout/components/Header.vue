@@ -4,11 +4,22 @@
   >
     <div class="text-primary-6 text-xl">{{ projectName }}</div>
     <div class="flex gap-x-4 cursor-pointer">
-      <a-button shape="round">
-        <template #icon>
-          <icon-language class="text-base" />
+      <a-dropdown trigger="hover" @select="handleChangeLocale">
+        <a-button shape="round">
+          <template #icon>
+            <icon-language class="text-base" />
+          </template>
+        </a-button>
+        <template #content>
+          <a-doption
+            v-for="item in localeOptions"
+            :key="item.id"
+            :value="item.value"
+          >
+            {{ item.label }}
+          </a-doption>
         </template>
-      </a-button>
+      </a-dropdown>
       <a-button
         v-show="'dark' === theme"
         shape="round"
@@ -27,7 +38,7 @@
           <icon-moon-fill class="text-base" />
         </template>
       </a-button>
-      <a-tooltip :content="$t('nav.dropdown.github')">
+      <a-tooltip :content="$t('header.dropdown.github')">
         <a-button v-if="isShowGithub" shape="round" @click="gotoGithub">
           <template #icon>
             <icon-github class="text-base" />
@@ -40,6 +51,7 @@
 
 <script lang="ts" setup>
   import { useSettingsStore } from '@/store'
+  import { useLocale } from '@/hooks/useLocale'
 
   // 主题配置
   const settingsStore = useSettingsStore()
@@ -58,6 +70,17 @@
   const toggleTheme = useToggle(isDark)
   const handleToggleTheme = () => {
     toggleTheme()
+  }
+
+  // 国际化
+  const { localeOptions, change: changeLocale } = useLocale()
+  const handleChangeLocale = (
+    value: string | number | Record<string, any> | undefined,
+    _e: Event
+  ) => {
+    if ('string' === typeof value) {
+      changeLocale(value)
+    }
   }
 
   const gotoGithub = () => {
