@@ -1,6 +1,6 @@
 <template>
   <nav
-    border="b-2 black"
+    border="b-solid b-1 border-1"
     p="y-4 x-5 sm:x-10 md:x-16"
     bg="bg-2"
     flex
@@ -20,6 +20,9 @@
             :key="item.id"
             :value="item.value"
           >
+            <template #icon>
+              <icon-check v-show="item.value === locale" />
+            </template>
             {{ item.label }}
           </a-doption>
         </template>
@@ -77,7 +80,7 @@
   }
 
   // 国际化
-  const { localeOptions, change: changeLocale } = useLocale()
+  const { locale, localeOptions, change: changeLocale } = useLocale()
   const handleChangeLocale = (
     value: string | number | Record<string, any> | undefined,
     _e: Event

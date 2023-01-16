@@ -7,6 +7,10 @@ export const useLocale = () => {
   const i18n = useI18n()
   const locale = computed(() => i18n.locale.value)
   const change = (l: string) => {
+    if (i18n.locale.value === l) {
+      // 如果当前locale和选择的相同的话 那么就不需要change了
+      return
+    }
     i18n.locale.value = l
     localStorage.setItem('ada-locale', l)
     Message.success(i18n.t('header.locale.success'))
