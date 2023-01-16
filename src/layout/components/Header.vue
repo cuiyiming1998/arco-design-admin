@@ -1,14 +1,18 @@
 <template>
   <nav
-    class="w-full border-b border-color-border-2 py-4 px-5 sm:px-10 md:px-16 flex justify-between items-center gap-x-4 bg-color-bg-2"
+    border="b-2 black"
+    p="y-4 x-5 sm:x-10 md:x-16"
+    bg="bg-2"
+    flex
+    justify-between
+    items-center
+    gap-x-4
   >
-    <div class="text-primary-6 text-xl">{{ projectName }}</div>
-    <div class="flex gap-x-4 cursor-pointer">
+    <div text="primary-6 xl">{{ projectName }}</div>
+    <div flex gap-x-4 cursor-pointer>
       <a-dropdown trigger="hover" @select="handleChangeLocale">
         <a-button shape="round">
-          <template #icon>
-            <icon-language class="text-base" />
-          </template>
+          <template #icon><icon-language text-base /></template>
         </a-button>
         <template #content>
           <a-doption
@@ -26,7 +30,7 @@
         @click="handleToggleTheme"
       >
         <template #icon>
-          <icon-sun-fill class="text-base" />
+          <icon-sun-fill text-base />
         </template>
       </a-button>
       <a-button
@@ -35,13 +39,13 @@
         @click="handleToggleTheme"
       >
         <template #icon>
-          <icon-moon-fill class="text-base" />
+          <icon-moon-fill text-base />
         </template>
       </a-button>
       <a-tooltip :content="$t('header.dropdown.github')">
         <a-button v-if="isShowGithub" shape="round" @click="gotoGithub">
           <template #icon>
-            <icon-github class="text-base" />
+            <icon-github text-base />
           </template>
         </a-button>
       </a-tooltip>

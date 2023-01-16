@@ -1,5 +1,5 @@
 <template>
-  <a-layout class="h-full ada-layout">
+  <a-layout h-full ada-layout>
     <a-layout-header>
       <Header />
     </a-layout-header>

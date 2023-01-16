@@ -1,10 +1,10 @@
-import '@/assets/tw.css'
 import ArcoVueIcon from '@arco-design/web-vue/es/icon'
 import '@arco-design/web-vue/dist/arco.css'
 import App from './App.vue'
 import router from './router/index'
 import 'animate.css'
 import i18n from './locale'
+import 'uno.css'
 
 const pinia = createPinia()
 
