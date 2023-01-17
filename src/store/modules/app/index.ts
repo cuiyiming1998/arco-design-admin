@@ -1,7 +1,8 @@
 import settings from '@/config/settings'
+import type { ProjectSettings } from '@/config/settings'
 
 const useSettingsStore = defineStore('settings', {
-  state: () => ({ ...settings }),
+  state: (): ProjectSettings => ({ ...settings }),
 
   actions: {
     toggleTheme(isDark: boolean) {

@@ -1,4 +1,16 @@
-export default {
+export interface ProjectSettings {
+  theme?: 'light' | 'dark'
+  projectName: string
+  baseURL: string
+  mock: boolean
+  urlPrefix: string
+  requestTimeout: number
+  successCode: number[] | number
+  isShowGithub: boolean
+  github: string
+}
+
+const defaultSettings: ProjectSettings = {
   // 默认主题
   theme: 'light',
   // 项目名称
@@ -18,3 +30,4 @@ export default {
   // github跳转地址,
   github: 'https://www.github.com/cuiyiming1998/arco-design-admin'
 }
+export default defaultSettings
