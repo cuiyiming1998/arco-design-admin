@@ -8,9 +8,14 @@ import AutoImport from 'unplugin-auto-import/vite'
 import UnoCSS from 'unocss/vite'
 import presetWind from '@unocss/preset-wind'
 import presetAttributify from '@unocss/preset-attributify'
+import topLevelAwait from 'vite-plugin-top-level-await'
 
 export default defineConfig({
   plugins: [
+    topLevelAwait({
+      promiseExportName: '__tla',
+      promiseImportName: i => `__tla_${i}`
+    }),
     Components({
       resolvers: [ArcoResolver()]
     }),
