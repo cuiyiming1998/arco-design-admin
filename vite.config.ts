@@ -110,7 +110,7 @@ export default defineConfig({
       imports: ['vue', '@vueuse/core', 'pinia', 'vue-router'],
       dts: './auto-imports.d.ts',
       eslintrc: {
-        enabled: true, // 第一次启动项目需要设置为true, 生成eslint文件, 之后恢复为false即可
+        enabled: false, // 第一次启动项目需要设置为true, 生成eslint文件, 之后恢复为false即可
         filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
         globalsPropValue: true // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
       }

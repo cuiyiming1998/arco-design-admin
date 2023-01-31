@@ -1,7 +1,7 @@
 import store from '../../index'
 import type { UserState } from './types.d'
 
-const useUserStore = defineStore('useUserStore', {
+const useUserStore = defineStore('user', {
   state: (): UserState => ({
     userInfo: {}
   }),

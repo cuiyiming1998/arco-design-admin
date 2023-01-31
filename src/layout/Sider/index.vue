@@ -11,5 +11,5 @@
   const { theme } = storeToRefs(settingsStore)
 
   const routeStore = useRouteStore()
-  const menuList = routeStore.getMenu
+  console.log(routeStore.getMenu)
 </script>

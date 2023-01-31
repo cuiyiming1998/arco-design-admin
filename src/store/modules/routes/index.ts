@@ -10,13 +10,11 @@ const useRouteStore = defineStore('route', {
   }),
 
   getters: {
-    getRoutes(): RouteRecordRaw[] {
-      console.log(this.routes)
-      return this.routes
+    getRoutes: (state): RouteRecordRaw[] => {
+      return state.routes
     },
-
-    getMenu(): any {
-      return this.menu
+    getMenu: (state): any => {
+      return state.menu
     }
   },
 
@@ -24,27 +22,32 @@ const useRouteStore = defineStore('route', {
     processMenuData() {
       console.log(1)
     },
-    generateRoutes(userData: any): RouteRecordRaw[] {
+    generateRoutes(_userData: any): RouteRecordRaw[] {
       // userData是服务端获取的用户数据
-      console.log(userData)
       // TODO:
       // 服务端获取路由表, 动态引入
       // 组装路由数据 -> RouteRecordRaw
-      const routes: ServerRoute = {
-        id: '1',
-        component: 'Layout',
-        name: '首页',
-        meta: {
-          icon: null,
-          title: '首页'
-        },
-        path: '/dashboard',
-        parentId: '0',
-        parentIds: '29494'
-      }
-      const records = formatServerRoutes([routes])
+      const routes: ServerRoute[] = [
+        {
+          id: '0',
+          component: 'Layout',
+          name: '首页',
+          meta: {
+            icon: null,
+            title: '首页'
+          },
+          path: '/dashboard',
+          parentId: '0',
+          parentIds: '29494'
+        }
+      ]
+      const records = formatServerRoutes(routes)
       this.generateMenu(records)
+      this.setRoutes(records)
       return records
+    },
+    setRoutes(routes: any) {
+      this.routes = routes
     },
     setMenu(menus: any) {
       this.menu = menus
@@ -56,7 +59,6 @@ const useRouteStore = defineStore('route', {
 })
 
 function formatServerRoutes(routes: ServerRoute[]) {
-  console.log(routes)
   return routes as unknown as RouteRecordRaw[]
 }
 
