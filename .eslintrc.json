@@ -41,6 +41,7 @@
       }
     ],
     "@typescript-eslint/ban-types": "off",
-    "@typescript-eslint/no-inferrable-types": "off"
+    "@typescript-eslint/no-inferrable-types": "off",
+    "prefer-const": "warn"
   }
 }

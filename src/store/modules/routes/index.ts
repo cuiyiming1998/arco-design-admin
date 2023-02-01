@@ -1,7 +1,9 @@
+import { compile } from 'vue'
 import defaultRouters from '@/router/defaultRouter'
 import store from '../../index'
 import { RouteRecordRaw } from 'vue-router'
-import type { RouteStoreState, ServerRoute } from './types'
+import type { RouteStoreState, ServerRoute, Menu } from './types'
+import { IconMenuFold } from '@arco-design/web-vue/es/icon'
 
 const useRouteStore = defineStore('route', {
   state: (): RouteStoreState => ({
@@ -19,9 +21,14 @@ const useRouteStore = defineStore('route', {
   },
 
   actions: {
-    processMenuData() {
-      console.log(1)
+    setRoutes(routes: any) {
+      this.routes = routes
     },
+
+    setMenu(menus: Menu[]) {
+      this.menu = menus
+    },
+
     generateRoutes(_userData: any): RouteRecordRaw[] {
       // userData是服务端获取的用户数据
       // TODO:
@@ -33,6 +40,32 @@ const useRouteStore = defineStore('route', {
           component: 'Layout',
           name: '首页',
           meta: {
+            icon: 'icon-menu-fold',
+            title: '首页'
+          },
+          path: '/dashboard',
+          parentId: '0',
+          parentIds: '29494',
+          children: [
+            {
+              id: '2',
+              component: 'Home',
+              name: '22222',
+              meta: {
+                icon: null,
+                title: '首页'
+              },
+              path: '/dashboard',
+              parentId: '0',
+              parentIds: '29494'
+            }
+          ]
+        },
+        {
+          id: '4',
+          component: 'Layout',
+          name: '单独的',
+          meta: {
             icon: null,
             title: '首页'
           },
@@ -42,18 +75,49 @@ const useRouteStore = defineStore('route', {
         }
       ]
       const records = formatServerRoutes(routes)
-      this.generateMenu(records)
+      this.generateMenu(routes)
       this.setRoutes(records)
       return records
     },
-    setRoutes(routes: any) {
-      this.routes = routes
+
+    generateMenuItem(route: ServerRoute) {
+      const item: Menu = this.getBaseMenu()
+      item.id = route.id
+      item.name = route.name
+      if (route.meta.icon) {
+        item.icon = h(compile(`<${route.meta.icon}/>`))
+      }
+      if (route.children?.length) {
+        item.hasChildren = true
+        route.children.map(r => {
+          const i = this.generateMenuItem(r)
+          item.children?.push(i)
+        })
+      }
+      return item
     },
-    setMenu(menus: any) {
-      this.menu = menus
+
+    getBaseMenu(): Menu {
+      const menu: Menu = {
+        id: '',
+        name: '',
+        type: '',
+        icon: null,
+        hasChildren: false,
+        children: []
+      }
+      return menu
     },
-    generateMenu(routes: RouteRecordRaw[]) {
-      this.setMenu(routes)
+
+    generateMenu(routes: ServerRoute[]) {
+      if (routes.length) {
+        const menus: Menu[] = []
+        routes.map(route => {
+          const item = this.generateMenuItem(route)
+          menus.push(item)
+        })
+        this.setMenu(menus)
+      }
     }
   }
 })
