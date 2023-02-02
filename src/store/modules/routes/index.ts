@@ -3,7 +3,9 @@ import defaultRouters from '@/router/defaultRouter'
 import store from '../../index'
 import { RouteRecordRaw } from 'vue-router'
 import type { RouteStoreState, ServerRoute, Menu } from './types'
-import { IconMenuFold } from '@arco-design/web-vue/es/icon'
+
+const menuPrefix = 'sider.menu.'
+const submenuPrefix = 'sider.submenu.'
 
 const useRouteStore = defineStore('route', {
   state: (): RouteStoreState => ({
@@ -38,10 +40,10 @@ const useRouteStore = defineStore('route', {
         {
           id: '0',
           component: 'Layout',
-          name: '首页',
+          name: 'name',
           meta: {
             icon: 'icon-menu-fold',
-            title: '首页'
+            title: 'home'
           },
           path: '/dashboard',
           parentId: '0',
@@ -53,7 +55,7 @@ const useRouteStore = defineStore('route', {
               name: '22222',
               meta: {
                 icon: null,
-                title: '首页'
+                title: 'home'
               },
               path: '/dashboard',
               parentId: '0',
@@ -64,10 +66,10 @@ const useRouteStore = defineStore('route', {
         {
           id: '4',
           component: 'Layout',
-          name: '单独的',
+          name: 'sider.menu.single',
           meta: {
             icon: null,
-            title: '首页'
+            title: 'single'
           },
           path: '/dashboard',
           parentId: '0',
@@ -82,10 +84,11 @@ const useRouteStore = defineStore('route', {
 
     generateMenuItem(route: ServerRoute) {
       const item: Menu = this.getBaseMenu()
-      item.id = route.id
-      item.name = route.name
-      if (route.meta.icon) {
-        item.icon = h(compile(`<${route.meta.icon}/>`))
+      const { id, meta } = route
+      item.id = id
+      const { icon, title } = meta
+      if (icon) {
+        item.icon = h(compile(`<${icon}/>`))
       }
       if (route.children?.length) {
         item.hasChildren = true
@@ -94,6 +97,7 @@ const useRouteStore = defineStore('route', {
           item.children?.push(i)
         })
       }
+      item.name = `${item.hasChildren ? submenuPrefix : menuPrefix}${title}`
       return item
     },
 

@@ -6,5 +6,8 @@ export default {
   'header.tooltip.language.dark': '切换到明亮模式',
   'header.tooltip.user.profile': '个人资料',
   'header.tooltip.user.settings': '个人设置',
-  'header.tooltip.user.logout': '退出登录'
+  'header.tooltip.user.logout': '退出登录',
+  'sider.submenu.home': '首页',
+  'sider.menu.home': '首页',
+  'sider.menu.single': '单独'
 }
