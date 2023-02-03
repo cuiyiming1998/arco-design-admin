@@ -1,9 +1,8 @@
-import { VNode } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
 
 export interface RouteStoreState {
   routes: RouteRecordRaw[]
-  menu: Menu[]
+  serverRoutes: ServerRoute[]
 }
 
 export interface ServerRoute {
@@ -19,13 +18,4 @@ export interface ServerRoute {
     icon: Nullable<string>
     title: string
   }
-}
-
-export interface Menu {
-  id: string | number
-  name: string
-  type: string
-  icon: VNode | null
-  hasChildren: boolean
-  children: Menu[]
 }

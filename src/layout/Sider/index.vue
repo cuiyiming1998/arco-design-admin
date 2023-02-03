@@ -1,7 +1,7 @@
 <template>
   <div h="full">
     <a-menu :theme="theme">
-      <template v-for="(item, index) in menu" :key="index">
+      <template v-for="(item, index) in menuTree" :key="index">
         <a-sub-menu v-if="item.hasChildren" :key="`${index}_${item.id}`">
           <template #icon>
             <component :is="item.icon" />
@@ -25,7 +25,8 @@
 </template>
 
 <script lang="ts" setup>
-  import { useSettingsStore, useRouteStore } from '@/store'
+  import { useSettingsStore } from '@/store'
+  import { useMenu } from '@/hooks/useMenu'
   import { useI18n } from 'vue-i18n'
 
   const { t } = useI18n()
@@ -33,7 +34,5 @@
   const settingsStore = useSettingsStore()
   const { theme } = storeToRefs(settingsStore)
 
-  const routeStore = useRouteStore()
-  const { menu } = storeToRefs(routeStore)
-  console.log(menu.value)
+  const { menuTree } = useMenu()
 </script>

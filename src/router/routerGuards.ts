@@ -1,10 +1,9 @@
 import { Router } from 'vue-router'
-import { routeStore } from '@/store/modules/routes'
-import { userStore } from '@/store/modules/user'
+import { useRouteStore, useUserStore } from '@/store'
 
 export function createRouterGuards(router: Router) {
-  const rStore = routeStore()
-  const uStore = userStore()
+  const rStore = useRouteStore()
+  const uStore = useUserStore()
 
   const userInfo = uStore.getInfo()
 
