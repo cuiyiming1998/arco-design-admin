@@ -91,7 +91,7 @@
               </span>
             </a-space>
           </a-doption>
-          <a-doption>
+          <a-doption @click="handleLogout">
             <a-space>
               <icon-export />
               <span>
@@ -108,6 +108,7 @@
 <script lang="ts" setup>
   import { useSettingsStore } from '@/store'
   import { useLocale } from '@/hooks/useLocale'
+  import { useLogout } from '@/hooks/useLogout'
   import MessageBox from './components/MessageBox.vue'
 
   // 主题配置
@@ -137,6 +138,11 @@
     if ('string' === typeof value) {
       changeLocale(value)
     }
+  }
+
+  const { logout } = useLogout()
+  const handleLogout = () => {
+    logout()
   }
 
   const gotoGithub = () => {

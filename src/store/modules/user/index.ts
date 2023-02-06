@@ -16,6 +16,10 @@ const useUserStore = defineStore('user', {
     getInfo() {
       this.userInfo = { permission: ['1'] }
       return this.userInfo
+    },
+
+    clearUserInfo() {
+      this.userInfo = {}
     }
   }
 })

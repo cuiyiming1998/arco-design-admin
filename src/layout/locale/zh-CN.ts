@@ -7,6 +7,7 @@ export default {
   'header.tooltip.user.profile': '个人资料',
   'header.tooltip.user.settings': '个人设置',
   'header.tooltip.user.logout': '退出登录',
+  'header.message.logout': '退出成功',
   'sider.submenu.home': '首页',
   'sider.menu.home': '首页',
   'sider.menu.single': '单独'

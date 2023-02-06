@@ -16,9 +16,9 @@ const defaultSettings: ProjectSettings = {
   // 项目名称
   projectName: 'Arco Design Admin',
   // 接口默认url
-  baseURL: '',
+  baseURL: 'https://demo.opsli.bedebug.com/opsli-boot',
   // 是否开启mock
-  mock: true,
+  mock: false,
   // 接口url前缀
   urlPrefix: '',
   // 超时时间 单位s

@@ -12,6 +12,6 @@ const app = createApp(App)
 app.use(ArcoVueIcon)
 app.use(i18n)
 await setupStore(app)
-await setupRouter(app)
+setupRouter(app)
 
 app.mount('#app')

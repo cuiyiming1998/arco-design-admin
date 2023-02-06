@@ -5,7 +5,7 @@ export function test() {
     {
       method: 'GET',
       params: { id: 1 },
-      url: 'http://jsonplaceholder.typicode.com/posts'
+      url: '/api/v1/system/user/getInfo'
     },
     {
       isShowMessage: true

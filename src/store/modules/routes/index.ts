@@ -72,7 +72,6 @@ const useRouteStore = defineStore('route', {
         }
       ]
       const records = formatServerRoutes(routes)
-      console.log(routes, records)
       this.setServerRoutes(routes)
       this.setRoutes(records)
       return records
