@@ -68,11 +68,14 @@
 <script lang="ts" setup>
   import { useI18n } from 'vue-i18n'
   import { useSettingsStore } from '@/store'
+  import { PagesPath } from '@/enums/pages'
   import type { LoginForm } from './types.d'
   import type { ValidatedError } from '@arco-design/web-vue'
 
   const settingsStore = useSettingsStore()
   const { formValidTrigger } = storeToRefs(settingsStore)
+
+  const router = useRouter()
 
   const { t } = useI18n()
 
@@ -106,7 +109,10 @@
     values: Record<string, any>
     errors: Record<string, ValidatedError> | undefined
   }) => {
-    console.log(values, errors)
+    if (!values || errors) {
+      return
+    }
+    router.push(PagesPath.Home)
   }
 
   const rememberPassword = ref<boolean>(config.value.rememberPassword)
