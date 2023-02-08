@@ -1,3 +1,4 @@
+import { FieldRule } from '@arco-design/web-vue'
 import type { VNodeChild, PropType as VuePropType } from 'vue'
 
 declare global {
@@ -50,6 +51,8 @@ declare global {
     success: boolean
     timestamp?: number
   }
+
+  type FormRules = Record<string, FieldRule | FieldRule[]>
 }
 
 // vue

@@ -8,6 +8,12 @@ export interface ProjectSettings {
   successCode: number[] | number
   isShowGithub: boolean
   github: string
+  formValidTrigger:
+    | 'focus'
+    | 'input'
+    | 'blur'
+    | 'change'
+    | ('focus' | 'input' | 'blur' | 'change')[]
 }
 
 const defaultSettings: ProjectSettings = {
@@ -28,6 +34,8 @@ const defaultSettings: ProjectSettings = {
   // 是否显示github icon
   isShowGithub: true,
   // github跳转地址,
-  github: 'https://www.github.com/cuiyiming1998/arco-design-admin'
+  github: 'https://www.github.com/cuiyiming1998/arco-design-admin',
+  // 表单验证trigger
+  formValidTrigger: ['blur', 'change']
 }
 export default defaultSettings
