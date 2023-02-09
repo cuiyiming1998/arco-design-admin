@@ -108,7 +108,7 @@
 <script lang="ts" setup>
   import { useSettingsStore } from '@/store'
   import { useLocale } from '@/hooks/useLocale'
-  import { useLogout } from '@/hooks/useLogout'
+  import { useLogin } from '@/hooks/useLogin'
   import MessageBox from './components/MessageBox.vue'
 
   // 主题配置
@@ -140,7 +140,7 @@
     }
   }
 
-  const { logout } = useLogout()
+  const { logout } = useLogin()
   const handleLogout = () => {
     logout()
   }

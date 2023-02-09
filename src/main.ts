@@ -10,8 +10,8 @@ import 'uno.css'
 const app = createApp(App)
 
 app.use(ArcoVueIcon)
-app.use(i18n)
 await setupStore(app)
 setupRouter(app)
+app.use(i18n)
 
 app.mount('#app')

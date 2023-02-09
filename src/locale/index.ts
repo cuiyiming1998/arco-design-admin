@@ -7,6 +7,7 @@ const locale = localStorage.getItem('ada-locale') || Locale.ZH_CN
 
 const i18n = createI18n({
   locale,
+  legacy: false,
   fallbackLocale: 'zh-CN',
   allowComposition: true,
   messages: {

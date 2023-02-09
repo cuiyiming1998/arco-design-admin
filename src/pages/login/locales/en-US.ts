@@ -5,5 +5,6 @@ export default {
   'login.form.rule.message.username': 'Username is required',
   'login.form.rule.message.password': 'Password is required',
   'login.form.checkbox.rememberPassword': 'Remember password',
-  'login.form.checkbox.forgetPassword': 'Forgot password'
+  'login.form.checkbox.forgetPassword': 'Forgot password',
+  'login.success': 'Login successfully'
 }

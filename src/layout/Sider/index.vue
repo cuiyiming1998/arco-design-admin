@@ -7,17 +7,17 @@
             <component :is="item.icon" />
           </template>
           <template #title>
-            {{ t(item.name || '') }}
+            {{ $t(item.name || '') }}
           </template>
           <a-menu-item
             v-for="menuItem in item.children"
             :key="`${index}_${item.id}_${menuItem.id}`"
           >
-            {{ t(menuItem.name || '') }}
+            {{ $t(menuItem.name || '') }}
           </a-menu-item>
         </a-sub-menu>
         <a-menu-item v-else :key="`${item.id}`">
-          {{ t(item.name || '') }}
+          {{ $t(item.name || '') }}
         </a-menu-item>
       </template>
     </a-menu>
@@ -27,9 +27,6 @@
 <script lang="ts" setup>
   import { useSettingsStore } from '@/store'
   import { useMenu } from '@/hooks/useMenu'
-  import { useI18n } from 'vue-i18n'
-
-  const { t } = useI18n()
 
   const settingsStore = useSettingsStore()
   const { theme } = storeToRefs(settingsStore)

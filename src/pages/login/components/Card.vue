@@ -13,7 +13,6 @@
     >
       <a-form-item
         hide-label
-        :rules="rules.username"
         :validate-trigger="formValidTrigger"
         field="username"
       >
@@ -30,7 +29,6 @@
 
       <a-form-item
         hide-label
-        :rules="rules.password"
         :validate-trigger="['change', 'blur']"
         field="password"
       >
@@ -68,14 +66,12 @@
 <script lang="ts" setup>
   import { useI18n } from 'vue-i18n'
   import { useSettingsStore } from '@/store'
-  import { PagesPath } from '@/enums/pages'
+  import { useLogin } from '@/hooks/useLogin'
   import type { LoginForm } from './types.d'
   import type { ValidatedError } from '@arco-design/web-vue'
 
   const settingsStore = useSettingsStore()
   const { formValidTrigger } = storeToRefs(settingsStore)
-
-  const router = useRouter()
 
   const { t } = useI18n()
 
@@ -89,19 +85,17 @@
     password: ''
   })
   const rules: FormRules = {
-    username: [
-      {
-        required: true,
-        message: t('login.form.rule.message.username')
-      }
-    ],
-    password: [
-      {
-        required: true,
-        message: t('login.form.rule.message.password')
-      }
-    ]
+    username: {
+      required: true,
+      message: t('login.form.rule.message.username')
+    },
+    password: {
+      required: true,
+      message: t('login.form.rule.message.password')
+    }
   }
+
+  const { login } = useLogin()
   const handleLogin = ({
     values,
     errors
@@ -112,7 +106,7 @@
     if (!values || errors) {
       return
     }
-    router.push(PagesPath.Home)
+    login()
   }
 
   const rememberPassword = ref<boolean>(config.value.rememberPassword)
