@@ -15,7 +15,7 @@ export interface RequestHandlers {
   handleResponseData?: <T = unknown>(
     res: AxiosResponse<BasicResponse<T>>,
     options: RequestOptions
-  ) => T | AxiosResponse<BasicResponse<T>>
+  ) => T
 
   /**
    * @description: 请求失败处理
@@ -46,6 +46,19 @@ export interface RequestHandlers {
   responseInterceptorCatch?: (error: AxiosError) => void
 }
 
+export interface RequestOptions {
+  // 是否显示后端message
+  isShowMessage?: boolean
+  // 在接口code不等于successCode时是否显示后端message
+  isShowErrorMessage?: boolean
+  // 在接口code等于successCode时是否显示后端message
+  isShowSuccessMessage?: boolean
+  // 成功的默认message
+  successMessage?: string
+  // 失败的默认message
+  errorMessage?: string
+}
+
 export interface BasicAxiosOptions extends AxiosRequestConfig {
   handlers?: RequestHandlers
   options?: RequestOptions
@@ -62,19 +75,4 @@ export interface UploadFileParams {
   // 文件名称
   filename?: string
   [key: string]: any
-}
-
-export interface RequestOptions {
-  // 是否返回原生AxiosResponse
-  raw?: boolean
-  // 是否显示后端message
-  isShowMessage?: boolean
-  // 在接口code不等于successCode时是否显示后端message
-  isShowErrorMessage?: boolean
-  // 在接口code等于successCode时是否显示后端message
-  isShowSuccessMessage?: boolean
-  // 成功的默认message
-  successMessage?: string
-  // 失败的默认message
-  errorMessage?: string
 }

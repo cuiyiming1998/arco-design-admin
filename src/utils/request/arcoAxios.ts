@@ -8,7 +8,6 @@ import { isFunction } from '../is'
 import { BasicAxiosOptions, RequestOptions, RequestHandlers } from './types'
 import { cloneDeep } from 'lodash-es'
 import { createError } from '../error'
-
 export class ArcoAxios {
   private options: BasicAxiosOptions
   private instance: AxiosInstance
@@ -134,7 +133,21 @@ export class ArcoAxios {
     return undefined
   }
 
-  request<T = unknown>(conf: AxiosRequestConfig, options?: RequestOptions) {
+  private baseRequest<T = unknown>(
+    conf: AxiosRequestConfig,
+    options: RequestOptions,
+    raw?: false
+  ): Promise<T>
+  private baseRequest<T = unknown>(
+    conf: AxiosRequestConfig,
+    options: RequestOptions,
+    raw: true
+  ): Promise<AxiosResponse<BasicResponse<T>>>
+  private baseRequest<T = unknown>(
+    conf: AxiosRequestConfig,
+    options: RequestOptions,
+    raw?: boolean
+  ): Promise<T | AxiosResponse<BasicResponse<T>>> {
     const handlers = this.getHandlers()
     const config = cloneDeep(conf)
     const { handleResponseData, beforeRequest, handleError } = handlers
@@ -144,27 +157,38 @@ export class ArcoAxios {
       beforeRequest(config, requestOptions)
     }
 
-    return new Promise((resolve, reject) => {
-      this.instance
-        .request(config)
-        .then((res: AxiosResponse<BasicResponse<T>>) => {
-          if (isFunction(handleResponseData)) {
-            try {
-              const response = handleResponseData(res, requestOptions)
-              return resolve(response)
-            } catch (err) {
-              return reject(err || createError('请求出错', 'Request错误'))
+    return new Promise<AxiosResponse<BasicResponse<T>> | T>(
+      (resolve, reject) => {
+        this.instance
+          .request(config)
+          .then((res: AxiosResponse<BasicResponse<T>>) => {
+            if (isFunction(handleResponseData)) {
+              try {
+                const response = raw
+                  ? cloneDeep(res)
+                  : handleResponseData(res, requestOptions)
+                return resolve(response)
+              } catch (err) {
+                return reject(err || createError('请求出错', 'Request错误'))
+              }
             }
-          }
-        })
-        .catch((err: Error) => {
-          // 执行错误处理
-          if (isFunction(handleError)) {
-            reject(handleError(err))
-          }
-          reject(err)
-        })
-    })
+          })
+          .catch((err: Error) => {
+            // 执行错误处理
+            if (isFunction(handleError)) {
+              reject(handleError(err))
+            }
+            reject(err)
+          })
+      }
+    )
+  }
+
+  requestRaw<T = unknown>(conf: AxiosRequestConfig, options = {}) {
+    return this.baseRequest<T>(conf, options, true)
+  }
+  request<T = unknown>(conf: AxiosRequestConfig, options = {}) {
+    return this.baseRequest<T>(conf, options, false)
   }
 
   private assignOptions(options?: RequestOptions): RequestOptions {

@@ -9,7 +9,7 @@
       layout="vertical"
       :model="loginForm"
       :rules="rules"
-      @submit="handleLogin"
+      @submit="validateForm"
     >
       <a-form-item
         hide-label
@@ -96,7 +96,7 @@
   }
 
   const { login } = useLogin()
-  const handleLogin = ({
+  const validateForm = ({
     values,
     errors
   }: {
@@ -106,7 +106,10 @@
     if (!values || errors) {
       return
     }
-    login()
+    handleLogin()
+  }
+  const handleLogin = () => {
+    login(toRaw(loginForm))
   }
 
   const rememberPassword = ref<boolean>(config.value.rememberPassword)
