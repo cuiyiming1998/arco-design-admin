@@ -12,14 +12,6 @@ type Response<T = unknown> = BasicResponse<T>
  * 默认请求处理方法
  *
  */
-// function handleResponseData<T = unknown>(
-//   res: AxiosResponse<Response<T>>,
-//   options: RequestOptions
-// ): T
-// function handleResponseData<T = unknown>(
-//   res: AxiosResponse<Response<T>>,
-//   options: RequestOptions
-// ): T
 function handleResponseData<T = unknown>(
   res: AxiosResponse<Response<T>>,
   options: RequestOptions
@@ -47,24 +39,28 @@ function handleResponseData<T = unknown>(
     'defaultHandlers - handleResponseData'
   )
 }
+
+function handleError(e: Error) {
+  return new Promise((_resolve, reject) => {
+    reject(e)
+  })
+}
+
+function responseInterceptorCatch(e: AxiosError) {
+  const { code, text } = getError(e)
+  console.log(`${code}: ${text}`)
+}
+
+function requestInterceptorCatch(e: AxiosError) {
+  const { code, text } = getError(e)
+  console.log(`${code}: ${text}`)
+}
+
 export const defaultHandlers: RequestHandlers = {
   handleResponseData,
-
-  handleError(e: Error) {
-    return new Promise((_resolve, reject) => {
-      reject(e)
-    })
-  },
-
-  responseInterceptorCatch(e: AxiosError) {
-    const { code, text } = getError(e)
-    console.log(`${code}: ${text}`)
-  },
-
-  requestInterceptorCatch(e: AxiosError) {
-    const { code, text } = getError(e)
-    console.log(`${code}: ${text}`)
-  }
+  handleError,
+  responseInterceptorCatch,
+  requestInterceptorCatch
 }
 
 /**
