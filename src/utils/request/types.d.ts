@@ -15,7 +15,7 @@ export interface RequestHandlers {
   handleResponseData?: <T = unknown>(
     res: AxiosResponse<BasicResponse<T>>,
     options: RequestOptions
-  ) => T
+  ) => BasicResponse<T>
 
   /**
    * @description: 请求失败处理

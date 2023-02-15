@@ -11,6 +11,8 @@
   "dependencies": {
     "@vueuse/core": "^7.5.3",
     "axios": "^1.2.2",
+    "buffer": "^6.0.3",
+    "jsencrypt": "^3.3.1",
     "lodash-es": "^4.17.21",
     "pinia": "^2.0.9",
     "vue": "3.2.25",

@@ -15,16 +15,14 @@ type Response<T = unknown> = BasicResponse<T>
 function handleResponseData<T = unknown>(
   res: AxiosResponse<Response<T>>,
   options: RequestOptions
-): T {
+): Response<T> {
   // 处理返回值不合法的情况
   handleInvalidData(res)
 
   createMessages(res.data, options)
   // 成功后在外面resolve(result)
   if (isSuccessResponse(res.data)) {
-    const { data } = res.data
-
-    const result = cloneDeep(data)
+    const result = cloneDeep(res.data)
     // showMessage的逻辑
     // 成功 直接返回数据
     return result

@@ -23,6 +23,6 @@ export function isFunction<T = Function>(val: unknown): val is T {
  */
 export function isValidValue(target: any) {
   const type = isNull(target) || isUndefined(target)
-  const value = ['undefined', 'null', 'Null'].includes(target)
+  const value = ['undefined', 'null', 'Null', ''].includes(target)
   return !type && !value
 }

@@ -8,6 +8,7 @@ import { isFunction } from '../is'
 import { BasicAxiosOptions, RequestOptions, RequestHandlers } from './types'
 import { cloneDeep } from 'lodash-es'
 import { createError } from '../error'
+
 export class ArcoAxios {
   private options: BasicAxiosOptions
   private instance: AxiosInstance
@@ -136,8 +137,8 @@ export class ArcoAxios {
   private baseRequest<T = unknown>(
     conf: AxiosRequestConfig,
     options: RequestOptions,
-    raw?: false
-  ): Promise<T>
+    raw: false
+  ): Promise<BasicResponse<T>>
   private baseRequest<T = unknown>(
     conf: AxiosRequestConfig,
     options: RequestOptions,
@@ -147,7 +148,7 @@ export class ArcoAxios {
     conf: AxiosRequestConfig,
     options: RequestOptions,
     raw?: boolean
-  ): Promise<T | AxiosResponse<BasicResponse<T>>> {
+  ): Promise<BasicResponse<T> | AxiosResponse<BasicResponse<T>>> {
     const handlers = this.getHandlers()
     const config = cloneDeep(conf)
     const { handleResponseData, beforeRequest, handleError } = handlers
@@ -157,7 +158,7 @@ export class ArcoAxios {
       beforeRequest(config, requestOptions)
     }
 
-    return new Promise<AxiosResponse<BasicResponse<T>> | T>(
+    return new Promise<AxiosResponse<BasicResponse<T>> | BasicResponse<T>>(
       (resolve, reject) => {
         this.instance
           .request(config)
