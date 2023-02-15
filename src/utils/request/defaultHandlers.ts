@@ -12,56 +12,53 @@ type Response<T = unknown> = BasicResponse<T>
  * 默认请求处理方法
  *
  */
-export const defaultHandlers: RequestHandlers = {
-  handleResponseData<T = unknown>(
-    res: AxiosResponse<Response<T>>,
-    options: RequestOptions
-  ): T | AxiosResponse<Response<T>> {
-    const { raw } = options
-    if (!options || raw) {
-      // 直接返回原生res
-      return res
-    }
+function handleResponseData<T = unknown>(
+  res: AxiosResponse<Response<T>>,
+  options: RequestOptions
+): Response<T> {
+  // 处理返回值不合法的情况
+  handleInvalidData(res)
 
-    // 处理返回值不合法的情况
-    handleInvalidData(res)
-
-    createMessages(res.data, options)
-    // 成功后在外面resolve(result)
-    if (isSuccessResponse(res.data)) {
-      const { data } = res.data
-
-      const result = cloneDeep(data)
-      // showMessage的逻辑
-      // 成功 直接返回数据
-      return result
-    }
-    // 不成功的情况会在外面reject掉
-    // TODO:
-    // 弹提示的逻辑前面已经处理完了, 这里需要添加业务逻辑
-    // 比如跳转登录页面等
-
-    return createError(
-      res.data.msg || '请求失败',
-      'defaultHandlers - handleResponseData'
-    )
-  },
-
-  handleError(e: Error) {
-    return new Promise((_resolve, reject) => {
-      reject(e)
-    })
-  },
-
-  responseInterceptorCatch(e: AxiosError) {
-    const { code, text } = getError(e)
-    console.log(`${code}: ${text}`)
-  },
-
-  requestInterceptorCatch(e: AxiosError) {
-    const { code, text } = getError(e)
-    console.log(`${code}: ${text}`)
+  createMessages(res.data, options)
+  // 成功后在外面resolve(result)
+  if (isSuccessResponse(res.data)) {
+    const result = cloneDeep(res.data)
+    // showMessage的逻辑
+    // 成功 直接返回数据
+    return result
   }
+  // 不成功的情况会在外面reject掉
+  // TODO:
+  // 弹提示的逻辑前面已经处理完了, 这里需要添加业务逻辑
+  // 比如跳转登录页面等
+
+  return createError(
+    res.data.msg || '请求失败',
+    'defaultHandlers - handleResponseData'
+  )
+}
+
+function handleError(e: Error) {
+  return new Promise((_resolve, reject) => {
+    reject(e)
+  })
+}
+
+function responseInterceptorCatch(e: AxiosError) {
+  const { code, text } = getError(e)
+  console.log(`${code}: ${text}`)
+}
+
+function requestInterceptorCatch(e: AxiosError) {
+  const { code, text } = getError(e)
+  console.log(`${code}: ${text}`)
+}
+
+export const defaultHandlers: RequestHandlers = {
+  handleResponseData,
+  handleError,
+  responseInterceptorCatch,
+  requestInterceptorCatch
 }
 
 /**
@@ -95,7 +92,7 @@ const isSuccessResponse = (data: Response) => {
     ? successCode.includes(code)
     : successCode === code
 
-  return success && flag
+  return flag || success
 }
 
 /**

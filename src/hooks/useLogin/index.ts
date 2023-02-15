@@ -1,15 +1,24 @@
 import { useUserStore } from '@/store'
 import { useRouter } from 'vue-router'
+import { encrypt, getKey } from '@/utils/encrypt/encrypt'
 import { PagesPath } from '@/enums/pages'
+import { login as loginApi } from '@/api/login'
 import { Message } from '@arco-design/web-vue'
 import { useI18n } from 'vue-i18n'
+import { LoginForm } from '@/pages/login/components/types.d'
 
 export const useLogin = () => {
   const userStore = useUserStore()
   const router = useRouter()
   const { t } = useI18n()
 
-  const login = () => {
+  const login = async (form: LoginForm) => {
+    const key = await getKey()
+    const encryptedData = encrypt(form, key)
+
+    const token = await getToken(encryptedData)
+    console.log(token)
+
     const msg = t('login.success')
     Message.success(msg)
     router.push(PagesPath.Home)
@@ -27,4 +36,10 @@ export const useLogin = () => {
     login,
     logout
   }
+}
+
+const getToken = async (encryptedData: string) => {
+  const { data } = await loginApi({ encryptedData })
+
+  return data
 }
