@@ -11,4 +11,6 @@
 
 <script lang="ts" setup>
   import Card from './components/Card.vue'
+
+  // TODO: 深色模式支持
 </script>
