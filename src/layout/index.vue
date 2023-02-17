@@ -15,8 +15,8 @@
 </template>
 
 <script lang="ts" setup>
-  import Header from './Header/index.vue'
-  import Sider from './Sider/index.vue'
+  import Header from './header/index.vue'
+  import Sider from './sider/index.vue'
 </script>
 
 <style lang="scss" scoped>
