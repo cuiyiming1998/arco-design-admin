@@ -1,6 +1,7 @@
 import defaultRouters from '@/router/defaultRouter'
 import { RouteRecordRaw } from 'vue-router'
 import type { RouteStoreState, ServerRoute } from './types'
+import { PagesPath } from '@/enums/pages'
 
 const useRouteStore = defineStore('route', {
   state: (): RouteStoreState => ({
@@ -36,11 +37,11 @@ const useRouteStore = defineStore('route', {
           id: '0',
           component: 'Layout',
           name: 'name',
+          path: PagesPath.Dashboard,
           meta: {
             icon: 'icon-menu-fold',
-            title: 'home'
+            title: 'dashboard'
           },
-          path: '/dashboard',
           parentId: '0',
           parentIds: '29494',
           children: [
@@ -50,25 +51,13 @@ const useRouteStore = defineStore('route', {
               name: '22222',
               meta: {
                 icon: null,
-                title: 'home'
+                title: 'workplace'
               },
-              path: '/dashboard',
+              path: PagesPath.Workplace,
               parentId: '0',
               parentIds: '29494'
             }
           ]
-        },
-        {
-          id: '4',
-          component: 'Layout',
-          name: 'sider.menu.single',
-          meta: {
-            icon: null,
-            title: 'single'
-          },
-          path: '/dashboard',
-          parentId: '0',
-          parentIds: '29494'
         }
       ]
       const records = formatServerRoutes(routes)

@@ -1,4 +1,4 @@
-export const HomePage = () => import('@/pages/home/index.vue')
+export const Workplace = () => import('@/pages/dashboard/workplace/index.vue')
 
 export const NotFoundPage = () => import('@/pages/404/index.vue')
 

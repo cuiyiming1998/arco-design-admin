@@ -1,9 +1,11 @@
 export enum PagesPath {
   Login = '/login',
-  Home = '/home'
+  Dashboard = '/dashboard',
+  Workplace = '/dashboard/workplace'
 }
 
 export enum PagesName {
   Login = 'login',
-  Home = 'home'
+  Dashboard = 'Dashboard',
+  Workplace = 'Workplace'
 }
