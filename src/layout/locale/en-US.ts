@@ -8,7 +8,7 @@ export default {
   'header.tooltip.user.settings': 'User Settings',
   'header.tooltip.user.logout': 'Logout',
   'header.message.logout': 'Logout successfully',
-  'sider.submenu.home': 'Home',
-  'sider.menu.home': 'Home',
+  'sider.menu.workplace': 'Workplace',
+  'sider.submenu.dashboard': 'Dashboard',
   'sider.menu.single': 'Single Page'
 }

@@ -1,11 +1,11 @@
 import { RouteRecordRaw } from 'vue-router'
-import { HomePage, NotFoundPage, Layout, LoginPage } from './routerComponents'
+import { Workplace, NotFoundPage, Layout, LoginPage } from './routerComponents'
 import { PagesPath, PagesName } from '@/enums/pages'
 
 export const Base: RouteRecordRaw = {
   path: '/',
   name: 'Base',
-  redirect: PagesPath.Home
+  redirect: PagesPath.Dashboard
 }
 export const Login: RouteRecordRaw = {
   path: PagesPath.Login,
@@ -16,20 +16,21 @@ export const Login: RouteRecordRaw = {
   }
 }
 
-export const Home: RouteRecordRaw = {
-  path: PagesPath.Home,
+export const Dashboard: RouteRecordRaw = {
+  path: PagesPath.Dashboard,
   name: 'HomeLayout',
   component: Layout,
+  redirect: PagesPath.Workplace,
   meta: {
-    title: '首页'
+    title: 'Dashboard'
   },
   children: [
     {
-      path: PagesPath.Home,
-      name: PagesName.Home,
-      component: HomePage,
+      path: PagesPath.Workplace,
+      name: PagesName.Workplace,
+      component: Workplace,
       meta: {
-        title: 'HomePage'
+        title: 'Workplace'
       }
     }
   ]
@@ -55,5 +56,5 @@ export const ErrorPage: RouteRecordRaw = {
   ]
 }
 
-const defaultRouters: RouteRecordRaw[] = [Login, Base, Home, ErrorPage]
+const defaultRouters: RouteRecordRaw[] = [Login, Base, Dashboard, ErrorPage]
 export default defaultRouters

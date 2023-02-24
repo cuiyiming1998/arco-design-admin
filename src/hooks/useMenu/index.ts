@@ -8,7 +8,7 @@ const submenuPrefix = 'sider.submenu.'
 
 function generateMenuItem(route: ServerRoute) {
   const item: Menu = getBaseMenu()
-  const { id, meta, children } = route
+  const { id, meta, children, path } = route
   const { icon, title } = meta
 
   if (icon) {
@@ -25,6 +25,7 @@ function generateMenuItem(route: ServerRoute) {
 
   item.id = id
   item.name = `${item.hasChildren ? submenuPrefix : menuPrefix}${title}`
+  item.path = path
 
   return item
 }
@@ -34,6 +35,7 @@ function getBaseMenu(): Menu {
     id: '',
     name: '',
     type: '',
+    path: '',
     icon: null,
     hasChildren: false,
     children: []
