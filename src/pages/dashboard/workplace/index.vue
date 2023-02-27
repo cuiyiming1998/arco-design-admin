@@ -1,7 +1,11 @@
 <template>
-  <main class="flex flex-col justify-center items-center p-20">
-    <a-button type="primary">按钮</a-button>
-  </main>
+  <div>
+    <div bg="bg-2" p="4">
+      <User />
+    </div>
+  </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  import User from './components/User.vue'
+</script>

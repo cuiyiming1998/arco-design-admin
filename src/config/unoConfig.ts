@@ -76,7 +76,7 @@ export const unoConfig: VitePluginConfig = {
         '3': 'var(--color-bg-3)',
         '2': 'var(--color-bg-2)',
         '1': 'var(--color-bg-1)',
-        white: 'var(--color-bg-white)'
+        'white': 'var(--color-bg-white)'
       }
     }
   },

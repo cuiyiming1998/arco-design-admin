@@ -3,7 +3,7 @@ import type { UserState } from './types.d'
 
 const useUserStore = defineStore('user', {
   state: (): UserState => ({
-    userInfo: {}
+    userInfo: { permission: ['1'], userName: 'Young' }
   }),
 
   getters: {
@@ -14,7 +14,6 @@ const useUserStore = defineStore('user', {
 
   actions: {
     getInfo() {
-      this.userInfo = { permission: ['1'] }
       return this.userInfo
     },
 
