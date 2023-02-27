@@ -7,8 +7,8 @@
       <a-layout-sider collapsible breakpoint="md">
         <Sider />
       </a-layout-sider>
-      <a-layout-content>
-        <router-view />
+      <a-layout-content class="flex-col">
+        <router-view p="2" flex="1" overflow="auto" bg="fill-1" />
       </a-layout-content>
     </a-layout>
   </a-layout>
