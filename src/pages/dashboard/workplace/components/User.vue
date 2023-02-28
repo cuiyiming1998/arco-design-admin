@@ -24,10 +24,23 @@
           </span>
         </div>
       </div>
-      <div>
-        <a-typography-text text="xl" font="500">
-          {{ userInfo.userName }}
-        </a-typography-text>
+      <div flex justify-center items-center>
+        <div flex-col items-center>
+          <span text="text-3">{{ $t('workplace.user.todo') }}</span>
+          <a-typography-text text="2xl" font="500" m="t-1">
+            10
+          </a-typography-text>
+        </div>
+        <a-divider
+          direction="vertical"
+          style="height: 2.5rem; margin: 0 2rem"
+        />
+        <div flex-col items-center>
+          <span text="text-3">{{ $t('workplace.user.projects') }}</span>
+          <a-typography-text text="2xl" m="t-1" font="500">
+            22
+          </a-typography-text>
+        </div>
       </div>
     </div>
   </section>
