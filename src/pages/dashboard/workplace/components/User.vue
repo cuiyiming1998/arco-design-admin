@@ -1,8 +1,6 @@
 <template>
-  <section>
-    <a-typography-text text="xl text-1" font="bold" m="0" block>
-      {{ $t('workplace.user.title') }}
-    </a-typography-text>
+  <section bg="bg-2" p="4">
+    <CardTitle :title="$t('workplace.user.title')" />
     <div flex m="t-4" items="center" justify-between>
       <div flex>
         <a-avatar :size="60" m="r-6 t-1">
@@ -24,10 +22,19 @@
           </span>
         </div>
       </div>
-      <div>
-        <a-typography-text text="xl" font="500">
-          {{ userInfo.userName }}
-        </a-typography-text>
+      <div flex justify-center items-center p="r-4">
+        <div flex-col items-center>
+          <span text="text-3">{{ $t('workplace.user.todo') }}</span>
+          <a-statistic animation :value="12" />
+        </div>
+        <a-divider
+          direction="vertical"
+          style="height: 2.5rem; margin: 0 2rem"
+        />
+        <div flex-col items-center>
+          <span text="text-3">{{ $t('workplace.user.projects.num') }}</span>
+          <a-statistic animation :value="35" />
+        </div>
       </div>
     </div>
   </section>
@@ -35,6 +42,7 @@
 
 <script lang="ts" setup>
   import { useUserStore } from '@/store'
+  import { CardTitle } from '@/components/CardTitle'
 
   const userStore = useUserStore()
   const { userInfo } = storeToRefs(userStore)
