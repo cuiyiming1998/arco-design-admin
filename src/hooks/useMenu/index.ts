@@ -1,7 +1,7 @@
-import { useRouteStore } from '@/store'
-import { ServerRoute } from '@/store/modules/routes/types'
 import { compile } from 'vue'
-import { Menu } from './types.d'
+import type { Menu } from './types.d'
+import { useRouteStore } from '@/store'
+import type { ServerRoute } from '@/store/modules/routes/types'
 
 const menuPrefix = 'sider.menu.'
 const submenuPrefix = 'sider.submenu.'
@@ -11,13 +11,12 @@ function generateMenuItem(route: ServerRoute) {
   const { id, meta, children, path } = route
   const { icon, title } = meta
 
-  if (icon) {
+  if (icon)
     item.icon = h(compile(`<${icon}/>`))
-  }
 
   if (children?.length) {
     item.hasChildren = true
-    children.map(r => {
+    children.forEach((r) => {
       const i = generateMenuItem(r)
       item.children?.push(i)
     })
@@ -38,7 +37,7 @@ function getBaseMenu(): Menu {
     path: '',
     icon: null,
     hasChildren: false,
-    children: []
+    children: [],
   }
   return menu
 }
@@ -46,7 +45,7 @@ function getBaseMenu(): Menu {
 function generateMenu(routes: ServerRoute[]) {
   const menus: Menu[] = []
   if (routes.length) {
-    routes.map(route => {
+    routes.forEach((route) => {
       const item = generateMenuItem(route)
       menus.push(item)
     })

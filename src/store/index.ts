@@ -1,5 +1,5 @@
 import { createPinia } from 'pinia'
-import { App } from 'vue'
+import type { App } from 'vue'
 import useSettingsStore from './modules/app'
 import useRouteStore from './modules/routes'
 import useUserStore from './modules/user'

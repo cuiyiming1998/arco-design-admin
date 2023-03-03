@@ -1,8 +1,7 @@
+import { JSEncrypt } from 'jsencrypt'
+import { isValidValue } from '../is'
 import { getCookie, setCookieByExpire } from './cookie'
 import { getPublicKey } from '@/api/common/publicKey'
-import { isValidValue } from '../is'
-import { JSEncrypt } from 'jsencrypt'
-import * as buffer from 'buffer'
 
 const COOKIE_KEY = 'PUBLIC_KEY'
 
@@ -32,20 +31,20 @@ export const getKey = async (): Promise<string> => {
 export const encrypt = (data: any, key: string) => {
   const encrypt = new JSEncrypt()
   encrypt.setPublicKey(
-    `-----BEGIN PUBLIC KEY-----${key}-----END PUBLIC KEY-----`
+    `-----BEGIN PUBLIC KEY-----${key}-----END PUBLIC KEY-----`,
   )
-  let bufTmp = '',
-    hexTmp = '',
-    result = ''
+  let bufTmp = ''
+  let hexTmp = ''
+  let result = ''
   let offSet = 0
   const buffer = Buffer.from(JSON.stringify(data))
   const inputLen = buffer.length
   while (inputLen - offSet > 0) {
-    if (inputLen - offSet > MAX_ENCRYPT_BLOCK) {
+    if (inputLen - offSet > MAX_ENCRYPT_BLOCK)
       bufTmp = buffer.slice(offSet, offSet + MAX_ENCRYPT_BLOCK).toString()
-    } else {
+    else
       bufTmp = buffer.slice(offSet, inputLen).toString()
-    }
+
     hexTmp = encrypt.encrypt(bufTmp.toString()).toString()
     result += atob(hexTmp)
     offSet += MAX_ENCRYPT_BLOCK

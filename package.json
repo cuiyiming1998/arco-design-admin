@@ -6,7 +6,8 @@
     "build": "vite build",
     "serve": "vite preview",
     "commit": "git add . && cz-customizable",
-    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix --quiet"
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix --quiet",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@vueuse/core": "^7.5.3",
@@ -21,6 +22,7 @@
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.35.3",
     "@arco-design/web-vue": "^2.41.0",
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",

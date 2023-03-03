@@ -1,13 +1,14 @@
-import axios, {
+import type {
   AxiosError,
   AxiosInstance,
   AxiosRequestConfig,
-  AxiosResponse
+  AxiosResponse,
 } from 'axios'
-import { isFunction } from '../is'
-import { BasicAxiosOptions, RequestOptions, RequestHandlers } from './types'
+import axios from 'axios'
 import { cloneDeep } from 'lodash-es'
+import { isFunction } from '../is'
 import { createError } from '../error'
+import type { BasicAxiosOptions, RequestHandlers, RequestOptions } from './types'
 
 export class ArcoAxios {
   private options: BasicAxiosOptions
@@ -56,13 +57,13 @@ export class ArcoAxios {
     // 请求拦截
     this.instance.interceptors.request.use(
       config => this.createRequestInterceptor(config),
-      e => this.createRequestInterceptorCatch.bind(this, e)
+      e => this.createRequestInterceptorCatch.bind(this, e),
     )
 
     // 响应拦截
     this.instance.interceptors.response.use(
       res => this.createResponseInterceptor(res),
-      e => this.createResponseInterceptorCatch.bind(this, e)
+      e => this.createResponseInterceptorCatch.bind(this, e),
     )
   }
 
@@ -77,9 +78,9 @@ export class ArcoAxios {
   private createRequestInterceptor(config: AxiosRequestConfig) {
     const handlers = this.getHandlers()
     const { requestInterceptor } = handlers
-    if (isFunction(requestInterceptor)) {
+    if (isFunction(requestInterceptor))
       config = requestInterceptor(config, this.options)
-    }
+
     return config
   }
 
@@ -94,9 +95,9 @@ export class ArcoAxios {
   private createRequestInterceptorCatch(e: AxiosError) {
     const handlers = this.getHandlers()
     const { requestInterceptorCatch } = handlers
-    if (isFunction(requestInterceptorCatch)) {
+    if (isFunction(requestInterceptorCatch))
       return requestInterceptorCatch(e)
-    }
+
     return undefined
   }
 
@@ -111,9 +112,9 @@ export class ArcoAxios {
   private createResponseInterceptor(res: AxiosResponse<any>) {
     const handlers = this.getHandlers()
     const { responseInterceptor } = handlers
-    if (isFunction(responseInterceptor)) {
+    if (isFunction(responseInterceptor))
       res = responseInterceptor(res)
-    }
+
     return res
   }
 
@@ -128,9 +129,9 @@ export class ArcoAxios {
   private createResponseInterceptorCatch(e: AxiosError) {
     const handlers = this.getHandlers()
     const { responseInterceptorCatch } = handlers
-    if (isFunction(responseInterceptorCatch)) {
+    if (isFunction(responseInterceptorCatch))
       return responseInterceptorCatch(e)
-    }
+
     return undefined
   }
 
@@ -147,16 +148,15 @@ export class ArcoAxios {
   private baseRequest<T = unknown>(
     conf: AxiosRequestConfig,
     options: RequestOptions,
-    raw?: boolean
+    raw?: boolean,
   ): Promise<BasicResponse<T> | AxiosResponse<BasicResponse<T>>> {
     const handlers = this.getHandlers()
     const config = cloneDeep(conf)
     const { handleResponseData, beforeRequest, handleError } = handlers
     const requestOptions = this.assignOptions(options)
     // 执行beforeRequest
-    if (isFunction(beforeRequest)) {
+    if (isFunction(beforeRequest))
       beforeRequest(config, requestOptions)
-    }
 
     return new Promise<AxiosResponse<BasicResponse<T>> | BasicResponse<T>>(
       (resolve, reject) => {
@@ -169,25 +169,27 @@ export class ArcoAxios {
                   ? cloneDeep(res)
                   : handleResponseData(res, requestOptions)
                 return resolve(response)
-              } catch (err) {
+              }
+              catch (err) {
                 return reject(err || createError('请求出错', 'Request错误'))
               }
             }
           })
           .catch((err: Error) => {
             // 执行错误处理
-            if (isFunction(handleError)) {
+            if (isFunction(handleError))
               reject(handleError(err))
-            }
+
             reject(err)
           })
-      }
+      },
     )
   }
 
   requestRaw<T = unknown>(conf: AxiosRequestConfig, options = {}) {
     return this.baseRequest<T>(conf, options, true)
   }
+
   request<T = unknown>(conf: AxiosRequestConfig, options = {}) {
     return this.baseRequest<T>(conf, options, false)
   }
@@ -197,7 +199,7 @@ export class ArcoAxios {
     const requestOptions: RequestOptions = Object.assign(
       {},
       basicOptions,
-      options
+      options,
     )
     return requestOptions
   }

@@ -1,19 +1,19 @@
-import { RouteRecordRaw } from 'vue-router'
-import { Workplace, NotFoundPage, Layout, LoginPage } from './routerComponents'
-import { PagesPath, PagesName } from '@/enums/pages'
+import type { RouteRecordRaw } from 'vue-router'
+import { Layout, LoginPage, NotFoundPage, Workplace } from './routerComponents'
+import { PagesName, PagesPath } from '@/enums/pages'
 
 export const Base: RouteRecordRaw = {
   path: '/',
   name: 'Base',
-  redirect: PagesPath.Dashboard
+  redirect: PagesPath.Dashboard,
 }
 export const Login: RouteRecordRaw = {
   path: PagesPath.Login,
   name: PagesName.Login,
   component: LoginPage,
   meta: {
-    title: '登录'
-  }
+    title: '登录',
+  },
 }
 
 export const Dashboard: RouteRecordRaw = {
@@ -22,7 +22,7 @@ export const Dashboard: RouteRecordRaw = {
   component: Layout,
   redirect: PagesPath.Workplace,
   meta: {
-    title: 'Dashboard'
+    title: 'Dashboard',
   },
   children: [
     {
@@ -30,10 +30,10 @@ export const Dashboard: RouteRecordRaw = {
       name: PagesName.Workplace,
       component: Workplace,
       meta: {
-        title: 'Workplace'
-      }
-    }
-  ]
+        title: 'Workplace',
+      },
+    },
+  ],
 }
 
 export const ErrorPage: RouteRecordRaw = {
@@ -42,7 +42,7 @@ export const ErrorPage: RouteRecordRaw = {
   component: Layout,
   meta: {
     title: 'NotFoundPageLayout',
-    hideBreadcrumb: true
+    hideBreadcrumb: true,
   },
   children: [
     {
@@ -50,10 +50,10 @@ export const ErrorPage: RouteRecordRaw = {
       name: 'NotFoundPage',
       component: NotFoundPage,
       meta: {
-        title: 'NotFoundPage'
-      }
-    }
-  ]
+        title: 'NotFoundPage',
+      },
+    },
+  ],
 }
 
 const defaultRouters: RouteRecordRaw[] = [Login, Base, Dashboard, ErrorPage]

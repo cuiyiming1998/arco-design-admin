@@ -1,4 +1,4 @@
-import { Router } from 'vue-router'
+import type { Router } from 'vue-router'
 import { useRouteStore, useUserStore } from '@/store'
 
 export function createRouterGuards(router: Router) {
@@ -10,7 +10,7 @@ export function createRouterGuards(router: Router) {
   const routes = rStore.generateRoutes(userInfo)
 
   // 动态添加路由表
-  routes.map(route => {
+  routes.forEach((route) => {
     router.addRoute(route)
   })
 }

@@ -12,8 +12,8 @@ const i18n = createI18n({
   allowComposition: true,
   messages: {
     'en-US': en,
-    'zh-CN': cn
-  }
+    'zh-CN': cn,
+  },
 })
 
 export default i18n

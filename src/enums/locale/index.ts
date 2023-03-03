@@ -1,4 +1,4 @@
 export enum Locale {
   ZH_CN = 'zh-CN',
-  EN_US = 'en-US'
+  EN_US = 'en-US',
 }

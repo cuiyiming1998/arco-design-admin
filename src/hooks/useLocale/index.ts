@@ -1,7 +1,7 @@
 import { useI18n } from 'vue-i18n'
 import { Message } from '@arco-design/web-vue'
+import type { LocaleOption } from './types.d'
 import { Locale } from '@/enums/locale'
-import { LocaleOption } from './types.d'
 
 export const useLocale = () => {
   const i18n = useI18n()
@@ -19,18 +19,18 @@ export const useLocale = () => {
     {
       id: 0,
       value: Locale.ZH_CN,
-      label: '简体中文'
+      label: '简体中文',
     },
     {
       id: 1,
       value: Locale.EN_US,
-      label: 'English'
-    }
+      label: 'English',
+    },
   ]
 
   return {
     locale,
     change,
-    localeOptions
+    localeOptions,
   }
 }

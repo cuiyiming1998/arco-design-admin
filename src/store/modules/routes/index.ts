@@ -1,12 +1,12 @@
-import defaultRouters from '@/router/defaultRouter'
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 import type { RouteStoreState, ServerRoute } from './types'
+import defaultRouters from '@/router/defaultRouter'
 import { PagesPath } from '@/enums/pages'
 
 const useRouteStore = defineStore('route', {
   state: (): RouteStoreState => ({
     routes: defaultRouters,
-    serverRoutes: []
+    serverRoutes: [],
   }),
 
   getters: {
@@ -15,7 +15,7 @@ const useRouteStore = defineStore('route', {
     },
     getServerRoutes: (state): ServerRoute[] => {
       return state.serverRoutes
-    }
+    },
   },
 
   actions: {
@@ -40,7 +40,7 @@ const useRouteStore = defineStore('route', {
           path: PagesPath.Dashboard,
           meta: {
             icon: 'icon-menu-fold',
-            title: 'dashboard'
+            title: 'dashboard',
           },
           parentId: '0',
           parentIds: '29494',
@@ -51,21 +51,21 @@ const useRouteStore = defineStore('route', {
               name: '22222',
               meta: {
                 icon: null,
-                title: 'workplace'
+                title: 'workplace',
               },
               path: PagesPath.Workplace,
               parentId: '0',
-              parentIds: '29494'
-            }
-          ]
-        }
+              parentIds: '29494',
+            },
+          ],
+        },
       ]
       const records = formatServerRoutes(routes)
       this.setServerRoutes(routes)
       this.setRoutes(records)
       return records
-    }
-  }
+    },
+  },
 })
 
 function formatServerRoutes(routes: ServerRoute[]) {
