@@ -10,5 +10,5 @@ export default {
   'header.message.logout': 'Logout successfully',
   'sider.menu.workplace': 'Workplace',
   'sider.submenu.dashboard': 'Dashboard',
-  'sider.menu.single': 'Single Page'
+  'sider.menu.single': 'Single Page',
 }

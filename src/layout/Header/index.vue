@@ -1,3 +1,47 @@
+<script lang="ts" setup>
+import MessageBox from './components/MessageBox.vue'
+import { useSettingsStore } from '@/store'
+import { useLocale } from '@/hooks/useLocale'
+import { useLogin } from '@/hooks/useLogin'
+
+// 主题配置
+const settingsStore = useSettingsStore()
+const { projectName, github, isShowGithub } = storeToRefs(settingsStore)
+const isDark = useDark({
+  selector: 'body',
+  attribute: 'arco-theme',
+  valueDark: 'dark',
+  valueLight: 'light',
+  storageKey: 'ada-theme',
+  onChanged(dark: boolean) {
+    settingsStore.toggleTheme(dark)
+  },
+})
+const toggleTheme = useToggle(isDark)
+const handleToggleTheme = () => {
+  toggleTheme()
+}
+
+// 国际化
+const { locale, localeOptions, change: changeLocale } = useLocale()
+const handleChangeLocale = (
+  value: string | number | Record<string, any> | undefined,
+  _e: Event,
+) => {
+  if (typeof value === 'string')
+    changeLocale(value)
+}
+
+const { logout } = useLogin()
+const handleLogout = () => {
+  logout()
+}
+
+const gotoGithub = () => {
+  window.open(unref(github))
+}
+</script>
+
 <template>
   <nav
     border="b-solid b-1 border-1"
@@ -14,7 +58,9 @@
     <div flex gap-x-4 cursor-pointer>
       <a-dropdown trigger="hover" @select="handleChangeLocale">
         <a-button shape="round">
-          <template #icon><icon-language text-base /></template>
+          <template #icon>
+            <icon-language text-base />
+          </template>
         </a-button>
         <template #content>
           <a-doption
@@ -72,7 +118,7 @@
           <img
             alt="avatar"
             src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"
-          />
+          >
         </a-avatar>
         <template #content>
           <a-doption>
@@ -104,50 +150,5 @@
     </div>
   </nav>
 </template>
-
-<script lang="ts" setup>
-  import { useSettingsStore } from '@/store'
-  import { useLocale } from '@/hooks/useLocale'
-  import { useLogin } from '@/hooks/useLogin'
-  import MessageBox from './components/MessageBox.vue'
-
-  // 主题配置
-  const settingsStore = useSettingsStore()
-  const { projectName, github, isShowGithub } = storeToRefs(settingsStore)
-  const isDark = useDark({
-    selector: 'body',
-    attribute: 'arco-theme',
-    valueDark: 'dark',
-    valueLight: 'light',
-    storageKey: 'ada-theme',
-    onChanged(dark: boolean) {
-      settingsStore.toggleTheme(dark)
-    }
-  })
-  const toggleTheme = useToggle(isDark)
-  const handleToggleTheme = () => {
-    toggleTheme()
-  }
-
-  // 国际化
-  const { locale, localeOptions, change: changeLocale } = useLocale()
-  const handleChangeLocale = (
-    value: string | number | Record<string, any> | undefined,
-    _e: Event
-  ) => {
-    if ('string' === typeof value) {
-      changeLocale(value)
-    }
-  }
-
-  const { logout } = useLogin()
-  const handleLogout = () => {
-    logout()
-  }
-
-  const gotoGithub = () => {
-    window.open(unref(github))
-  }
-</script>
 
 <style lang="scss" scoped></style>

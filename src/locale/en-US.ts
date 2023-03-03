@@ -5,5 +5,5 @@ import workplace from '@/pages/dashboard/workplace/locale/en-US'
 export default {
   ...localeLayout,
   ...localeLogin,
-  ...workplace
+  ...workplace,
 }

@@ -1,5 +1,5 @@
-import { AxiosRequestConfig } from 'axios'
-import { RequestOptions } from './types'
+import type { AxiosRequestConfig } from 'axios'
+import type { RequestOptions } from './types'
 import settings from '@/config/settings'
 import { ContentType } from '@/enums/http'
 
@@ -10,8 +10,8 @@ export const axiosConfig: AxiosRequestConfig = {
   timeout: requestTimeout * 1000,
   baseURL,
   headers: {
-    'Content-Type': ContentType.JSON
-  }
+    'Content-Type': ContentType.JSON,
+  },
 }
 
 // 系统请求配置
@@ -20,5 +20,5 @@ export const defaultOption: RequestOptions = {
   isShowErrorMessage: true,
   isShowSuccessMessage: false,
   successMessage: '请求成功',
-  errorMessage: '请求失败'
+  errorMessage: '请求失败',
 }

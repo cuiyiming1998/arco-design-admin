@@ -5,7 +5,7 @@ import { ArcoAxios } from './arcoAxios'
 function createAxios() {
   const option = Object.assign(axiosConfig, {
     options: defaultOption,
-    handlers: defaultHandlers
+    handlers: defaultHandlers,
   })
   return new ArcoAxios(option)
 }

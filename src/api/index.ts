@@ -5,10 +5,10 @@ export function test() {
     {
       method: 'GET',
       params: { id: 1 },
-      url: '/api/v1/system/user/getInfo'
+      url: '/api/v1/system/user/getInfo',
     },
     {
-      isShowMessage: true
-    }
+      isShowMessage: true,
+    },
   )
 }

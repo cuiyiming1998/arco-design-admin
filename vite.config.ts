@@ -1,22 +1,22 @@
-import { defineConfig } from 'vite'
 import path from 'path'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vuejsx from '@vitejs/plugin-vue-jsx'
 import Components from 'unplugin-vue-components/vite'
 import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
 import UnoCSS from 'unocss/vite'
-import { unoConfig } from './src/config/unoConfig'
 import topLevelAwait from 'vite-plugin-top-level-await'
+import { unoConfig } from './src/config/unoConfig'
 
 export default defineConfig({
   plugins: [
     topLevelAwait({
       promiseExportName: '__tla',
-      promiseImportName: i => `__tla_${i}`
+      promiseImportName: i => `__tla_${i}`,
     }),
     Components({
-      resolvers: [ArcoResolver()]
+      resolvers: [ArcoResolver()],
     }),
     UnoCSS(unoConfig),
     AutoImport({
@@ -25,16 +25,16 @@ export default defineConfig({
       eslintrc: {
         enabled: false, // 第一次启动项目需要设置为true, 生成eslint文件, 之后恢复为false即可
         filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
-        globalsPropValue: true // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
-      }
+        globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+      },
     }),
     vue(),
-    vuejsx()
+    vuejsx(),
   ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      'vue': 'vue/dist/vue.esm-bundler.js'
-    }
-  }
+      'vue': 'vue/dist/vue.esm-bundler.js',
+    },
+  },
 })

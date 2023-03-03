@@ -1,3 +1,58 @@
+<script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
+import type { ValidatedError } from '@arco-design/web-vue'
+import type { LoginForm } from './types.d'
+import { useSettingsStore } from '@/store'
+import { useLogin } from '@/hooks/useLogin'
+
+const settingsStore = useSettingsStore()
+const { formValidTrigger } = storeToRefs(settingsStore)
+
+const { t } = useI18n()
+
+const config = useStorage('loginConfig', {
+  rememberPassword: true,
+})
+
+const form = ref()
+const loginForm = reactive<LoginForm>({
+  username: '',
+  password: '',
+})
+const rules: FormRules = {
+  username: {
+    required: true,
+    message: t('login.form.rule.message.username'),
+  },
+  password: {
+    required: true,
+    message: t('login.form.rule.message.password'),
+  },
+}
+
+const { login } = useLogin()
+const handleLogin = () => {
+  login(toRaw(loginForm))
+}
+const validateForm = ({
+  values,
+  errors,
+}: {
+  values: Record<string, any>
+  errors: Record<string, ValidatedError> | undefined
+}) => {
+  if (!values || errors)
+    return
+
+  handleLogin()
+}
+
+const rememberPassword = ref<boolean>(config.value.rememberPassword)
+const switchRememberPassword = (value: boolean) => {
+  config.value.rememberPassword = value
+}
+</script>
+
 <template>
   <div class="card w-full">
     <h1 class="text-3xl text-center mb-10">
@@ -57,66 +112,13 @@
       </a-row>
 
       <a-form-item class="mt-2">
-        <a-button html-type="submit" type="primary" long>Submit</a-button>
+        <a-button html-type="submit" type="primary" long>
+          Submit
+        </a-button>
       </a-form-item>
     </a-form>
   </div>
 </template>
-
-<script lang="ts" setup>
-  import { useI18n } from 'vue-i18n'
-  import { useSettingsStore } from '@/store'
-  import { useLogin } from '@/hooks/useLogin'
-  import type { LoginForm } from './types.d'
-  import type { ValidatedError } from '@arco-design/web-vue'
-
-  const settingsStore = useSettingsStore()
-  const { formValidTrigger } = storeToRefs(settingsStore)
-
-  const { t } = useI18n()
-
-  const config = useStorage('loginConfig', {
-    rememberPassword: true
-  })
-
-  const form = ref()
-  const loginForm = reactive<LoginForm>({
-    username: '',
-    password: ''
-  })
-  const rules: FormRules = {
-    username: {
-      required: true,
-      message: t('login.form.rule.message.username')
-    },
-    password: {
-      required: true,
-      message: t('login.form.rule.message.password')
-    }
-  }
-
-  const { login } = useLogin()
-  const validateForm = ({
-    values,
-    errors
-  }: {
-    values: Record<string, any>
-    errors: Record<string, ValidatedError> | undefined
-  }) => {
-    if (!values || errors) {
-      return
-    }
-    handleLogin()
-  }
-  const handleLogin = () => {
-    login(toRaw(loginForm))
-  }
-
-  const rememberPassword = ref<boolean>(config.value.rememberPassword)
-  const switchRememberPassword = (value: boolean) => {
-    config.value.rememberPassword = value
-  }
-</script>
 
 <style lang="scss" scoped>
   .card {

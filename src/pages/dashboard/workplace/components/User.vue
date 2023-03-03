@@ -1,3 +1,11 @@
+<script lang="ts" setup>
+import { useUserStore } from '@/store'
+import { CardTitle } from '@/components/CardTitle'
+
+const userStore = useUserStore()
+const { userInfo } = storeToRefs(userStore)
+</script>
+
 <template>
   <section bg="bg-2" p="4">
     <CardTitle :title="$t('workplace.user.title')" />
@@ -7,7 +15,7 @@
           <img
             alt="avatar"
             src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"
-          />
+          >
         </a-avatar>
         <div>
           <a-typography-text text="xl" font="500">
@@ -39,11 +47,3 @@
     </div>
   </section>
 </template>
-
-<script lang="ts" setup>
-  import { useUserStore } from '@/store'
-  import { CardTitle } from '@/components/CardTitle'
-
-  const userStore = useUserStore()
-  const { userInfo } = storeToRefs(userStore)
-</script>

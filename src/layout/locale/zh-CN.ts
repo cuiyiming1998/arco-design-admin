@@ -10,5 +10,5 @@ export default {
   'header.message.logout': '退出成功',
   'sider.menu.workplace': '工作台',
   'sider.submenu.dashboard': '仪表盘',
-  'sider.menu.single': '单独'
+  'sider.menu.single': '单独',
 }

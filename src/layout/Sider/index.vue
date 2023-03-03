@@ -1,3 +1,21 @@
+<script lang="ts" setup>
+import { useSettingsStore } from '@/store'
+import { useMenu } from '@/hooks/useMenu'
+import { PagesPath } from '@/enums/pages'
+
+const settingsStore = useSettingsStore()
+const { theme } = storeToRefs(settingsStore)
+
+const { menuTree } = useMenu()
+
+const router = useRouter()
+
+const menuClick = (path: string) => {
+  console.log({ path })
+  router.push({ path })
+}
+</script>
+
 <template>
   <div h="full">
     <a-menu
@@ -25,21 +43,3 @@
     </a-menu>
   </div>
 </template>
-
-<script lang="ts" setup>
-  import { useSettingsStore } from '@/store'
-  import { useMenu } from '@/hooks/useMenu'
-  import { PagesPath } from '@/enums/pages'
-
-  const settingsStore = useSettingsStore()
-  const { theme } = storeToRefs(settingsStore)
-
-  const { menuTree } = useMenu()
-
-  const router = useRouter()
-
-  const menuClick = (path: string) => {
-    console.log({ path })
-    router.push({ path })
-  }
-</script>

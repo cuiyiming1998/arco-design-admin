@@ -10,13 +10,14 @@ const useSettingsStore = defineStore('settings', {
         this.theme = 'dark'
         document.documentElement.classList.add('dark')
         document.body.setAttribute('arco-theme', 'dark')
-      } else {
+      }
+      else {
         this.theme = 'light'
         document.documentElement.classList.remove('dark')
         document.body.removeAttribute('arco-theme')
       }
-    }
-  }
+    },
+  },
 })
 
 export default useSettingsStore

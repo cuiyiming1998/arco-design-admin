@@ -1,3 +1,8 @@
+<script lang="ts" setup>
+import Header from './Header/index.vue'
+import Sider from './Sider/index.vue'
+</script>
+
 <template>
   <a-layout h-full ada-layout>
     <a-layout-header>
@@ -13,11 +18,6 @@
     </a-layout>
   </a-layout>
 </template>
-
-<script lang="ts" setup>
-  import Header from './Header/index.vue'
-  import Sider from './Sider/index.vue'
-</script>
 
 <style lang="scss" scoped>
   .ada-layout :deep(.arco-layout-sider) {
