@@ -1,8 +1,18 @@
 import presetWind from '@unocss/preset-wind'
 import presetAttributify from '@unocss/preset-attributify'
-import type { VitePluginConfig } from 'unocss/vite'
-export const unoConfig: VitePluginConfig = {
-  presets: [presetWind(), presetAttributify()],
+import presetIcons from '@unocss/preset-icons'
+
+export const unoConfig: any = {
+  presets: [
+    presetWind(),
+    presetAttributify(),
+    presetIcons({
+      extraProperties: {
+        'display': 'inline-block',
+        'vertical-align': 'middle',
+      },
+    }),
+  ],
   theme: {
     breakpoints: {
       sm: '576px',
