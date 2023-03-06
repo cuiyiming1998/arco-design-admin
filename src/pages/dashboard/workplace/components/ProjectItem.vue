@@ -4,9 +4,19 @@ export interface Props {
   description: string
   belong?: string
 }
-defineProps<Props>()
+const props = defineProps<Props>()
 </script>
 
 <template>
-  <div>ProjectItem</div>
+  <div
+    border="solid  1px gray-200"
+    flex="col"
+    justify-center
+    items-center
+    p="4"
+  >
+    <a-typography-text text="xl" font="500">
+      {{ props.name }}
+    </a-typography-text>
+  </div>
 </template>

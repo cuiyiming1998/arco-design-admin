@@ -5,12 +5,14 @@ specifiers:
   '@arco-design/web-vue': ^2.41.0
   '@commitlint/cli': ^17.3.0
   '@commitlint/config-conventional': ^17.3.0
+  '@iconify-json/mdi': ^1.1.49
   '@types/js-cookie': ^3.0.2
   '@types/lodash-es': ^4.17.6
   '@types/node': ^17.0.8
   '@typescript-eslint/eslint-plugin': ^5.47.0
   '@typescript-eslint/parser': ^5.47.0
   '@unocss/preset-attributify': ^0.48.4
+  '@unocss/preset-icons': ^0.50.4
   '@unocss/preset-wind': ^0.48.4
   '@vitejs/plugin-vue': 3.0.0
   '@vitejs/plugin-vue-jsx': ^2.0.1
@@ -73,12 +75,14 @@ devDependencies:
   '@arco-design/web-vue': registry.npmmirror.com/@arco-design/web-vue/2.41.1_vue@3.2.25
   '@commitlint/cli': registry.npmmirror.com/@commitlint/cli/17.3.0
   '@commitlint/config-conventional': registry.npmmirror.com/@commitlint/config-conventional/17.3.0
+  '@iconify-json/mdi': registry.npmmirror.com/@iconify-json/mdi/1.1.49
   '@types/js-cookie': registry.npmmirror.com/@types/js-cookie/3.0.2
   '@types/lodash-es': 4.17.6
   '@types/node': 17.0.8
   '@typescript-eslint/eslint-plugin': registry.npmmirror.com/@typescript-eslint/eslint-plugin/5.47.1_f1ca6dc3704079ede1c321aa099e61d1
   '@typescript-eslint/parser': registry.npmmirror.com/@typescript-eslint/parser/5.47.1_eslint@8.30.0+typescript@4.5.4
   '@unocss/preset-attributify': registry.npmmirror.com/@unocss/preset-attributify/0.48.4
+  '@unocss/preset-icons': registry.npmmirror.com/@unocss/preset-icons/0.50.4
   '@unocss/preset-wind': registry.npmmirror.com/@unocss/preset-wind/0.48.4
   '@vitejs/plugin-vue': 3.0.0_vite@3.0.0+vue@3.2.25
   '@vitejs/plugin-vue-jsx': 2.0.1_vite@3.0.0+vue@3.2.25
@@ -1952,6 +1956,14 @@ packages:
     version: 1.2.1
     dev: true
 
+  registry.npmmirror.com/@iconify-json/mdi/1.1.49:
+    resolution: {integrity: sha512-FT8LGtl6GzPo2gD/uAlI934HuasoCMBJ48DXRj5JcQzoiI0hWzdo2/Qjax334nK/TBsU2B282PiQCacQdCJgcg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify-json/mdi/-/mdi-1.1.49.tgz}
+    name: '@iconify-json/mdi'
+    version: 1.1.49
+    dependencies:
+      '@iconify/types': registry.npmmirror.com/@iconify/types/2.0.0
+    dev: true
+
   registry.npmmirror.com/@iconify/types/2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/types/-/types-2.0.0.tgz}
     name: '@iconify/types'
@@ -1969,6 +1981,21 @@ packages:
       debug: registry.npmmirror.com/debug/4.3.4
       kolorist: registry.npmmirror.com/kolorist/1.6.0
       local-pkg: registry.npmmirror.com/local-pkg/0.4.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  registry.npmmirror.com/@iconify/utils/2.1.4:
+    resolution: {integrity: sha512-7vzsYIvxv5Hng0MNEtSSnyMBD/+zqnORqmKiYsSgpMBGSz1r93URgBZHPYCZ1/gpoaVstYW4/SVLGCMJBNMCLQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/utils/-/utils-2.1.4.tgz}
+    name: '@iconify/utils'
+    version: 2.1.4
+    dependencies:
+      '@antfu/install-pkg': registry.npmmirror.com/@antfu/install-pkg/0.1.1
+      '@antfu/utils': registry.npmmirror.com/@antfu/utils/0.7.2
+      '@iconify/types': registry.npmmirror.com/@iconify/types/2.0.0
+      debug: registry.npmmirror.com/debug/4.3.4
+      kolorist: registry.npmmirror.com/kolorist/1.7.0
+      local-pkg: registry.npmmirror.com/local-pkg/0.4.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2778,6 +2805,12 @@ packages:
     version: 0.48.4
     dev: true
 
+  registry.npmmirror.com/@unocss/core/0.50.4:
+    resolution: {integrity: sha512-k/8CdnO4w7f+QdvCpS3U5y6xApC4odiErkBKCCaGgBqOWkuTSL92TiBnffSEA2WepGm1+Mv4urIk20ocKYxbUQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unocss/core/-/core-0.50.4.tgz}
+    name: '@unocss/core'
+    version: 0.50.4
+    dev: true
+
   registry.npmmirror.com/@unocss/inspector/0.48.4:
     resolution: {integrity: sha512-YcPJoMUbOhldMxMLg9bGNMgReNIcYmIomI2NY77aiPcihv47LLPlN/ur3/syz5SxxihRgIIdFXmGhpj6HDa9vg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unocss/inspector/-/inspector-0.48.4.tgz}
     name: '@unocss/inspector'
@@ -2803,6 +2836,18 @@ packages:
       '@iconify/utils': registry.npmmirror.com/@iconify/utils/2.0.12
       '@unocss/core': registry.npmmirror.com/@unocss/core/0.48.4
       ohmyfetch: registry.npmmirror.com/ohmyfetch/0.4.21
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  registry.npmmirror.com/@unocss/preset-icons/0.50.4:
+    resolution: {integrity: sha512-0Bnito2u/t479oI9syXG8ynK1q2YUBt+dV6S6UugiTtys0KahjmuOTuk10GDgF50r4FvI38QfHBv+kF95qmwZg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unocss/preset-icons/-/preset-icons-0.50.4.tgz}
+    name: '@unocss/preset-icons'
+    version: 0.50.4
+    dependencies:
+      '@iconify/utils': registry.npmmirror.com/@iconify/utils/2.1.4
+      '@unocss/core': registry.npmmirror.com/@unocss/core/0.50.4
+      ofetch: registry.npmmirror.com/ofetch/1.0.1
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6582,6 +6627,12 @@ packages:
     version: 1.6.0
     dev: true
 
+  registry.npmmirror.com/kolorist/1.7.0:
+    resolution: {integrity: sha512-ymToLHqL02udwVdbkowNpzjFd6UzozMtshPQKVi5k1EjKRqKqBrOnE9QbLEb0/pV76SAiIT13hdL8R6suc+f3g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/kolorist/-/kolorist-1.7.0.tgz}
+    name: kolorist
+    version: 1.7.0
+    dev: true
+
   registry.npmmirror.com/launch-editor/2.6.0:
     resolution: {integrity: sha512-JpDCcQnyAAzZZaZ7vEiSqL690w7dAEyLao+KC96zBplnYbJS7TYNjvM3M7y3dGz+v7aIsJk3hllWuc0kWAjyRQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/launch-editor/-/launch-editor-2.6.0.tgz}
     name: launch-editor
@@ -7056,6 +7107,12 @@ packages:
     version: 0.1.8
     dev: true
 
+  registry.npmmirror.com/node-fetch-native/1.0.2:
+    resolution: {integrity: sha512-KIkvH1jl6b3O7es/0ShyCgWLcfXxlBrLBbP3rOr23WArC66IMcU4DeZEeYEOwnopYhawLTn7/y+YtmASe8DFVQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/node-fetch-native/-/node-fetch-native-1.0.2.tgz}
+    name: node-fetch-native
+    version: 1.0.2
+    dev: true
+
   registry.npmmirror.com/node-fetch/2.6.7:
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/node-fetch/-/node-fetch-2.6.7.tgz}
     name: node-fetch
@@ -7178,6 +7235,16 @@ packages:
       call-bind: registry.npmmirror.com/call-bind/1.0.2
       define-properties: registry.npmmirror.com/define-properties/1.1.4
       es-abstract: registry.npmmirror.com/es-abstract/1.20.5
+    dev: true
+
+  registry.npmmirror.com/ofetch/1.0.1:
+    resolution: {integrity: sha512-icBz2JYfEpt+wZz1FRoGcrMigjNKjzvufE26m9+yUiacRQRHwnNlGRPiDnW4op7WX/MR6aniwS8xw8jyVelF2g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ofetch/-/ofetch-1.0.1.tgz}
+    name: ofetch
+    version: 1.0.1
+    dependencies:
+      destr: registry.npmmirror.com/destr/1.2.2
+      node-fetch-native: registry.npmmirror.com/node-fetch-native/1.0.2
+      ufo: registry.npmmirror.com/ufo/1.1.1
     dev: true
 
   registry.npmmirror.com/ohmyfetch/0.4.21:
@@ -8526,6 +8593,12 @@ packages:
     resolution: {integrity: sha512-boAm74ubXHY7KJQZLlXrtMz52qFvpsbOxDcZOnw/Wf+LS4Mmyu7JxmzD4tDLtUQtmZECypJ0FrCz4QIe6dvKRA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ufo/-/ufo-1.0.1.tgz}
     name: ufo
     version: 1.0.1
+    dev: true
+
+  registry.npmmirror.com/ufo/1.1.1:
+    resolution: {integrity: sha512-MvlCc4GHrmZdAllBc0iUDowff36Q9Ndw/UzqmEKyrfSzokTd9ZCy1i+IIk5hrYKkjoYVQyNbrw7/F8XJ2rEwTg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ufo/-/ufo-1.1.1.tgz}
+    name: ufo
+    version: 1.1.1
     dev: true
 
   registry.npmmirror.com/unbox-primitive/1.0.2:
