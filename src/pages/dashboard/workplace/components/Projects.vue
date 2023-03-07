@@ -8,6 +8,18 @@ const projectList: Props[] = [
     name: 'Vue',
     description: 'Vue.js',
   },
+  {
+    name: 'React',
+    description: 'React.js',
+  },
+  {
+    name: 'Vite',
+    description: 'Vite',
+  },
+  {
+    name: 'Webpack',
+    description: 'Webpack',
+  },
 ]
 </script>
 

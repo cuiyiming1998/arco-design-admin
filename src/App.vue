@@ -15,7 +15,9 @@ const l = computed(() => {
 
 <template>
   <a-config-provider :locale="l">
-    <router-view />
+    <main w-full h-full font-sans text="black dark:gray-100">
+      <router-view />
+    </main>
   </a-config-provider>
 </template>
 
