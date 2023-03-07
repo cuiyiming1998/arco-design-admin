@@ -6,13 +6,15 @@ import Projects from './components/Projects.vue'
 <template>
   <div>
     <User />
-    <a-row m="y-4" :gutter="16">
-      <a-col :xl="18" :xs="24">
-        <Projects />
-      </a-col>
-      <a-col :xl="6" :xs="24">
-        456
-      </a-col>
-    </a-row>
+    <div my-4>
+      <a-row :gutter="[16, 16]">
+        <a-col :xl="16" :xs="24">
+          <Projects />
+        </a-col>
+        <a-col :xl="8" :xs="24">
+          快捷入口
+        </a-col>
+      </a-row>
+    </div>
   </div>
 </template>
