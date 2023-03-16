@@ -7,7 +7,6 @@ import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
 import UnoCSS from 'unocss/vite'
 import topLevelAwait from 'vite-plugin-top-level-await'
-import { unoConfig } from './src/config/unoConfig'
 
 export default defineConfig({
   plugins: [
@@ -18,7 +17,7 @@ export default defineConfig({
     Components({
       resolvers: [ArcoResolver()],
     }),
-    UnoCSS(unoConfig),
+    UnoCSS(),
     AutoImport({
       imports: ['vue', '@vueuse/core', 'pinia', 'vue-router'],
       dts: './auto-imports.d.ts',

@@ -1,11 +1,22 @@
-import presetWind from '@unocss/preset-wind'
-import presetAttributify from '@unocss/preset-attributify'
-import presetIcons from '@unocss/preset-icons'
+import {
+  defineConfig,
+  presetAttributify,
+  presetIcons,
+  presetWebFonts,
+  presetWind,
+} from 'unocss'
 
-export const unoConfig: any = {
+export default defineConfig({
   presets: [
     presetWind(),
     presetAttributify(),
+    presetWebFonts({
+      fonts: {
+        sans: 'DM Sans',
+        serif: 'DM Serif Display',
+        mono: 'DM mono',
+      },
+    }),
     presetIcons({
       extraProperties: {
         'display': 'inline-block',
@@ -97,4 +108,4 @@ export const unoConfig: any = {
     ['text-ellipsis', 'truncate'],
   ],
   rules: [],
-}
+})
