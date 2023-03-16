@@ -2,6 +2,7 @@ import {
   defineConfig,
   presetAttributify,
   presetIcons,
+  presetWebFonts,
   presetWind,
 } from 'unocss'
 
@@ -9,6 +10,13 @@ export default defineConfig({
   presets: [
     presetWind(),
     presetAttributify(),
+    presetWebFonts({
+      fonts: {
+        sans: 'DM Sans',
+        serif: 'DM Serif Display',
+        mono: 'DM mono',
+      },
+    }),
     presetIcons({
       extraProperties: {
         'display': 'inline-block',
