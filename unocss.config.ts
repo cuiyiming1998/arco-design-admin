@@ -1,8 +1,11 @@
-import presetWind from '@unocss/preset-wind'
-import presetAttributify from '@unocss/preset-attributify'
-import presetIcons from '@unocss/preset-icons'
+import {
+  defineConfig,
+  presetAttributify,
+  presetIcons,
+  presetWind,
+} from 'unocss'
 
-export const unoConfig: any = {
+export default defineConfig({
   presets: [
     presetWind(),
     presetAttributify(),
@@ -97,4 +100,4 @@ export const unoConfig: any = {
     ['text-ellipsis', 'truncate'],
   ],
   rules: [],
-}
+})
