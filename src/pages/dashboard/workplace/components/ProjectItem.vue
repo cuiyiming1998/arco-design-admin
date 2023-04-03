@@ -3,7 +3,7 @@ export interface Props {
   name: string
   description: string
   belong?: string
-
+  lastChanged?: string
 }
 const props = withDefaults(
   defineProps<Props>(),
@@ -11,6 +11,7 @@ const props = withDefaults(
     name: '',
     description: '',
     belong: 'Young',
+    lastChanged: '',
   },
 )
 </script>
@@ -20,10 +21,10 @@ const props = withDefaults(
     flex-col
     w-full
     h-32
-    shadow="~ gray-500/30"
-    transition="all 9"
+    box-border
+    base-shadow
   >
-    <div p-4 flex-1>
+    <div p="x-6 y-4" flex-1>
       <span text="lg" font="500">
         <span i-mdi-vuejs text="green-600" />
         <span
@@ -39,8 +40,13 @@ const props = withDefaults(
       <div mt-4 text-gray-500>
         {{ props.description || '-' }}
       </div>
-      <div mt-4 w-full text="gray-500/50">
-        {{ props.belong || '-' }}
+      <div mt-4 flex justify-between items-center text="gray-500/50">
+        <span>
+          {{ props.belong || '-' }}
+        </span>
+        <span v-if="props.lastChanged">
+          {{ props.lastChanged }}
+        </span>
       </div>
     </div>
   </div>

@@ -107,5 +107,7 @@ export default defineConfig({
     ['flex-col', 'flex flex-col'],
     ['text-ellipsis', 'truncate'],
   ],
-  rules: [],
+  rules: [
+    ['base-shadow', { 'box-shadow': '1px 0 0 0 rgba(0,0,0,.06), 0 1px 0 0 rgba(0,0,0,.06), 1px 1px 0 0 rgba(0,0,0,.06), inset 1px 0 0 0 rgba(0,0,0,.06), inset 0 1px 0 0 rgba(0,0,0,.06)' }],
+  ],
 })
