@@ -7,7 +7,7 @@ const { userInfo } = storeToRefs(userStore)
 </script>
 
 <template>
-  <section bg="bg-2" p="4">
+  <section base-card>
     <CardTitle :title="$t('workplace.user.title')" />
     <div flex m="t-4" items="center" justify-between>
       <div flex>
@@ -40,7 +40,7 @@ const { userInfo } = storeToRefs(userStore)
           style="height: 2.5rem; margin: 0 2rem"
         />
         <div flex-col items-center>
-          <span text="text-3">{{ $t('workplace.user.projects.num') }}</span>
+          <span text="text-3">{{ $t('workplace.projects.num') }}</span>
           <a-statistic animation :value="35" />
         </div>
       </div>

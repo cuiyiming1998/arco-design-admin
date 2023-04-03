@@ -106,6 +106,7 @@ export default defineConfig({
     ['f-c-c', 'flex justify-center items-center'],
     ['flex-col', 'flex flex-col'],
     ['text-ellipsis', 'truncate'],
+    ['base-card', 'bg-bg-2 p-4'],
   ],
   rules: [
     ['base-shadow', { 'box-shadow': '1px 0 0 0 rgba(0,0,0,.06), 0 1px 0 0 rgba(0,0,0,.06), 1px 1px 0 0 rgba(0,0,0,.06), inset 1px 0 0 0 rgba(0,0,0,.06), inset 0 1px 0 0 rgba(0,0,0,.06)' }],

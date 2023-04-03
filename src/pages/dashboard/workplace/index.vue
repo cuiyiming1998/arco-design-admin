@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import User from './components/User.vue'
 import Projects from './components/Projects.vue'
+import Entries from './components/Entries.vue'
 </script>
 
 <template>
@@ -12,7 +13,7 @@ import Projects from './components/Projects.vue'
           <Projects />
         </a-col>
         <a-col :xl="8" :xs="24">
-          快捷入口
+          <Entries />
         </a-col>
       </a-row>
     </div>

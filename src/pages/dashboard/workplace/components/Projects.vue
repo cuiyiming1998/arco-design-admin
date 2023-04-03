@@ -31,9 +31,9 @@ const projectList: Props[] = [
 </script>
 
 <template>
-  <div bg="bg-2" p="4">
-    <CardTitle :title="$t('workplace.user.projects')" />
-    <a-row m="t-2">
+  <div base-card>
+    <CardTitle :title="$t('workplace.projects.title')" />
+    <a-row>
       <a-col v-for="(project, index) in projectList" :key="index" :span="8">
         <ProjectItem v-bind="{ ...project }" />
       </a-col>
