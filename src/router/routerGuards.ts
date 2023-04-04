@@ -5,12 +5,22 @@ export function createRouterGuards(router: Router) {
   const rStore = useRouteStore()
   const uStore = useUserStore()
 
-  const userInfo = uStore.getInfo()
+  router.beforeEach(async (to, from, next) => {
+    // 刷新用户信息
+    const userInfo = await uStore.getInfo()
 
-  const routes = rStore.generateRoutes(userInfo)
+    if (rStore.isAddedRoutes) {
+      // 如果添加过了 那么就直接next
+      next()
+      return
+    }
 
-  // 动态添加路由表
-  routes.forEach((route) => {
-    router.addRoute(route)
+    const routes = await rStore.generateRoutes(userInfo)
+    // 动态添加路由表
+    routes.forEach((route) => {
+      router.addRoute(route)
+    })
+
+    next()
   })
 }

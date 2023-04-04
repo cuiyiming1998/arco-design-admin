@@ -17,7 +17,6 @@ export class ArcoAxios {
     this.options = options
     this.instance = this.createInstance(options)
     this.createInterceptors()
-    console.log('实例的Options', options)
   }
 
   /**

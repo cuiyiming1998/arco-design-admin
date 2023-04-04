@@ -16,6 +16,9 @@ const useRouteStore = defineStore('route', {
     getServerRoutes: (state): ServerRoute[] => {
       return state.serverRoutes
     },
+    isAddedRoutes: (state): boolean => {
+      return !!state.serverRoutes?.length
+    },
   },
 
   actions: {
@@ -27,7 +30,7 @@ const useRouteStore = defineStore('route', {
       this.serverRoutes = routes
     },
 
-    generateRoutes(_userData: any): RouteRecordRaw[] {
+    async generateRoutes(_userData: any): Promise<RouteRecordRaw[]> {
       // userData是服务端获取的用户数据
       // TODO:
       // 服务端获取路由表, 动态引入
@@ -63,7 +66,9 @@ const useRouteStore = defineStore('route', {
       const records = formatServerRoutes(routes)
       this.setServerRoutes(routes)
       this.setRoutes(records)
-      return records
+      return new Promise((resolve) => {
+        resolve(records)
+      })
     },
   },
 })
