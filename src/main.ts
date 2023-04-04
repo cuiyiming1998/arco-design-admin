@@ -7,6 +7,7 @@ import { setupRouter } from './router/index'
 import 'animate.css'
 import i18n from './locale'
 import 'uno.css'
+import './styles/common.scss'
 
 if (typeof (window as any).global === 'undefined')
   (window as any).global = window

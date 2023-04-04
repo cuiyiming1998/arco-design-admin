@@ -4,4 +4,5 @@ export default {
   'workplace.projects.num': 'Projects',
   'workplace.projects.title': 'Projects',
   'workplace.entries.title': 'Fast Entries',
+  'workplace.groups.title': 'Groups',
 }
