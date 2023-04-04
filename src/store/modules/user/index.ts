@@ -3,18 +3,27 @@ import type { UserState } from './types.d'
 
 const useUserStore = defineStore('user', {
   state: (): UserState => ({
-    userInfo: { permission: ['1'], userName: 'Young' },
+    userInfo: { permissions: ['1'], userName: 'Young' },
   }),
 
   getters: {
     getUserInfo(): any {
       return this.userInfo
     },
+    getUserPermissions(): string[] {
+      return this.state.userInfo.permissions
+    },
   },
 
   actions: {
-    getInfo() {
-      return this.userInfo
+    async getInfo() {
+      const fakeInfo: UserState['userInfo'] = {
+        permissions: ['1'],
+        userName: 'Young',
+      }
+      return new Promise((resolve) => {
+        resolve(fakeInfo)
+      })
     },
 
     clearUserInfo() {
