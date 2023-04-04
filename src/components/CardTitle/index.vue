@@ -5,8 +5,8 @@ const props = withDefaults(defineProps<{ title: string }>(), {
 </script>
 
 <template>
-  <div>
-    <a-typography-text text="xl text-1" font="bold" mb-2 block>
+  <div mb-2>
+    <a-typography-text text="lg text-1" font="bold" block>
       {{ props.title }}
     </a-typography-text>
   </div>

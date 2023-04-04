@@ -2,6 +2,7 @@
 import User from './components/User.vue'
 import Projects from './components/Projects.vue'
 import Entries from './components/Entries.vue'
+import Groups from './components/Groups.vue'
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import Entries from './components/Entries.vue'
         </a-col>
         <a-col :xl="8" :xs="24">
           <Entries />
+          <Groups mt-4 />
         </a-col>
       </a-row>
     </div>
