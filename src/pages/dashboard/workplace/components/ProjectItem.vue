@@ -28,8 +28,7 @@ const props = withDefaults(
       <span text="lg" font="500">
         <span i-mdi-vuejs text="green-600" />
         <span
-          text="md
-          hover:primary-5"
+          text="hover:primary-5"
           inline-block
           ml-2
           cursor-pointer

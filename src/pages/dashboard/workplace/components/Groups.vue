@@ -5,7 +5,7 @@
 <template>
   <div base-card>
     <CardTitle :title="$t('workplace.groups.title')" />
-    <a-row :gutter="[16, 32]" text="base">
+    <a-row :gutter="[16, 32]">
       <a-col :span="8" f-c-c>
         <a-badge :count="2">
           <a href="" f-c-c flex-col>
